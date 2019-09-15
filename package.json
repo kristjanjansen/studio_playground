@@ -10,7 +10,8 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
-    "typescript": "3.6.3"
+    "typescript": "3.6.3",
+    "use-element-position": "^1.0.13"
   },
   "scripts": {
     "start": "react-scripts start",
