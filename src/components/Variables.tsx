@@ -3,13 +3,13 @@ import useKeyboard from "../hooks/useKeyboard";
 
 const Variables: FC = () => {
   const [variables, setVariables] = useState({
-    "--font-size": 14,
-    "--font-size-small": 12,
-    "--border-radius": 12
+    "--font-size": { value: 14, min: 8, max: 24 },
+    "--font-size-small": { value: 12, min: 8, max: 24 },
+    "--border-radius": { value: 14, min: 0, max: 24 }
   });
   useEffect(() => {
-    Object.entries(variables).forEach(([key, value]) => {
-      document.documentElement.style.setProperty(key, value + "px");
+    Object.entries(variables).forEach(([key, settings]) => {
+      document.documentElement.style.setProperty(key, settings.value + "px");
     });
   }, [variables]);
 
@@ -20,8 +20,8 @@ const Variables: FC = () => {
       style={{
         display: pressed ? "block" : "none",
         position: "fixed",
-        bottom: "10px",
-        right: "10px",
+        bottom: "20px",
+        right: "20px",
         width: "250px",
         background: "var(--gray-900)",
         opacity: 0.75,
@@ -30,7 +30,7 @@ const Variables: FC = () => {
         borderRadius: "4px"
       }}
     >
-      {Object.entries(variables).map(([key, value]) => (
+      {Object.entries(variables).map(([key, settings]) => (
         <div>
           <div
             style={{
@@ -39,17 +39,20 @@ const Variables: FC = () => {
               fontFamily: "var(--font-family--code)"
             }}
           >
-            {key} = {value}px
+            {key} = {settings.value}px
           </div>
           <input
             type="range"
-            min="8"
-            max="24"
-            value={value}
+            min={settings.min}
+            max={settings.max}
+            value={settings.value}
             onChange={e => {
               const val = e.target.value;
               setVariables(prevState => {
-                return { ...prevState, [key]: val };
+                return {
+                  ...prevState,
+                  [key]: { ...(prevState as any)[key], value: val }
+                };
               });
             }}
           />
