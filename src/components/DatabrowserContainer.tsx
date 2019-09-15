@@ -6,7 +6,7 @@ const DatabrowserContainer: FC<{ children?: any }> = ({ children = null }) => (
       backgroundColor: "var(--databrowser-background)",
       borderRadius: "var(--card-radius)",
       boxSizing: "border-box",
-      boxShadow: "var(--shadow-color) 0px 2px 4px",
+      boxShadow: "var(--shadow-color) 0px 2px var(--shadow-blur)",
       overflow: "hidden",
       height: "100%",
       padding: "10px"

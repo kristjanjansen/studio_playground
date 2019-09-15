@@ -6,7 +6,7 @@ const CardContainer: FC<{ children?: any }> = ({ children = null }) => (
       backgroundColor: "white",
       borderRadius: "var(--card-radius)",
       boxSizing: "border-box",
-      boxShadow: "var(--shadow-color) 0px 2px 4px",
+      boxShadow: "var(--shadow-color) 0px 2px var(--shadow-blur)",
       overflow: "hidden",
       height: '100%'
     }}

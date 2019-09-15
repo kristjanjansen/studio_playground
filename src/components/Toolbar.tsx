@@ -9,7 +9,8 @@ const Toolbar: FC = () => {
         background: 'white',
         justifyContent: 'center',
         paddingTop: '10px',
-        height: '100%'
+        height: '100%',
+        boxShadow: "inset var(--shadow-color) 0px 2px var(--shadow-blur)",
       }}
     >
       <ToolbarIcon />

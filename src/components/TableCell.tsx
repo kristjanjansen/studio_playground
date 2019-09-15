@@ -12,7 +12,7 @@ const TableCell: FC<{ data?: any }> = ({ data = null }) => {
         whiteSpace: "nowrap",
       }}
     >
-      {typeof data == "object" ? "Object" : String(data).slice(0,20)}
+      {typeof data == "object" ? "Object" : String(data).slice(0,30)}
     </div>
   );
 };

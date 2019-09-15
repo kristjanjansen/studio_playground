@@ -10,7 +10,6 @@ const DatabrowserButton: FC<{ children?: any }> = ({ children = null }) => (
       fontWeight: "bold",
       padding: "4px 6px",
       borderRadius: "3px",
-      backgroundColor: "transparent",
       transition: "var(--transition-normal)"
     }}
   >

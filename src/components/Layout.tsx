@@ -66,7 +66,8 @@ const Loader: FC = () => {
         variables={{
           "--font-size": { value: 14, min: 8, max: 24 },
           "--font-size-small": { value: 12, min: 8, max: 24 },
-          "--card-radius": { value: 14, min: 0, max: 24 }
+          "--card-radius": { value: 8, min: 0, max: 24 },
+          "--shadow-blur": { value: 4, min: 0, max: 8 }
         }}
       />
     </div>

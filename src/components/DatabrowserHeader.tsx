@@ -14,7 +14,7 @@ const DatabrowserHeader: FC = () => (
   >
     <div style={{ display: "flex" }}>
       <DatabrowserButton>
-      <FilterIcon />
+        <FilterIcon />
       </DatabrowserButton>
       {[
         "User",
