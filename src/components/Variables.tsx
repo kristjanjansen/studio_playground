@@ -1,17 +1,13 @@
 import React, { FC, useState, useEffect } from "react";
 import useKeyboard from "../hooks/useKeyboard";
 
-const Variables: FC = () => {
-  const [variables, setVariables] = useState({
-    "--font-size": { value: 14, min: 8, max: 24 },
-    "--font-size-small": { value: 12, min: 8, max: 24 },
-    "--border-radius": { value: 14, min: 0, max: 24 }
-  });
+const Variables: FC<{ variables?: Object }> = ({ variables = {} }) => {
+  const [cssVariables, setCssVariables] = useState(variables);
   useEffect(() => {
-    Object.entries(variables).forEach(([key, settings]) => {
+    Object.entries(cssVariables).forEach(([key, settings]) => {
       document.documentElement.style.setProperty(key, settings.value + "px");
     });
-  }, [variables]);
+  }, [cssVariables]);
 
   const pressed = useKeyboard("v");
 
@@ -30,8 +26,8 @@ const Variables: FC = () => {
         borderRadius: "4px"
       }}
     >
-      {Object.entries(variables).map(([key, settings]) => (
-        <div>
+      {Object.entries(cssVariables).map(([key, settings],i) => (
+        <div key={ i}>
           <div
             style={{
               fontSize: "12px",
@@ -48,7 +44,7 @@ const Variables: FC = () => {
             value={settings.value}
             onChange={e => {
               const val = e.target.value;
-              setVariables(prevState => {
+              setCssVariables(prevState => {
                 return {
                   ...prevState,
                   [key]: { ...(prevState as any)[key], value: val }

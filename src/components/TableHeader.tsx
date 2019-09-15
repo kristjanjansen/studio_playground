@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import TableRow from "./TableRow";
 import TableHeaderCell from "./TableHeaderCell";
 
 const TableHeader: FC<{ data?: Object[] }> = ({ data = [] }) => (

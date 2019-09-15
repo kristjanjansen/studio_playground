@@ -85,7 +85,7 @@
   /* Dynamically set variables */
   --font-size: 14px;
   --font-size-small: 12px;
-  --border-radius: 8px;
+  --card-radius: 8px;
 }
 
 html,
