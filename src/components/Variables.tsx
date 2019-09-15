@@ -1,25 +1,29 @@
 import React, { FC, useState, useEffect } from "react";
+import useKeyboard from "../hooks/useKeyboard";
 
 const Counter: FC = () => {
-  const [slider, setSlider] = useState(14);
+  const [fontSize, setFontSize] = useState(14);
+  const [fontSizeSmall, setFontSizeSmall] = useState(12);
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      `--font-size`,
-      slider + "px"
-    );
-  }, [slider]);
+    document.documentElement.style.setProperty(`--font-size`, fontSize + "px");
+    document.documentElement.style.setProperty(`--font-size-small`, fontSizeSmall + "px");
+  }, [fontSizeSmall]);
+
+  const pressed = useKeyboard("v");
+
   return (
     <div
       style={{
+        display: pressed ? "block" : "none",
         position: "fixed",
-        top: 0,
-        right: 0,
-        bottom: 0,
+        bottom: "10px",
+        right: "10px",
         width: "250px",
         background: "var(--gray-900)",
         opacity: 0.75,
         color: "var(--gray-200)",
-        padding: "10px"
+        padding: "10px",
+        borderRadius: "4px"
       }}
     >
       <div
@@ -29,14 +33,30 @@ const Counter: FC = () => {
           fontFamily: "var(--font-family--code)"
         }}
       >
-        var(--font-size) = {slider}
+        var(--font-size) = {fontSize}
       </div>
       <input
         type="range"
-        min="10"
-        max="20"
-        value={slider}
-        onChange={el => setSlider(parseFloat(el.target.value))}
+        min="8"
+        max="24"
+        value={fontSize}
+        onChange={el => setFontSize(parseFloat(el.target.value))}
+      />
+      <div
+        style={{
+          fontSize: "12px",
+          paddingBottom: "10px",
+          fontFamily: "var(--font-family--code)"
+        }}
+      >
+        var(--font-size-small) = {fontSizeSmall}
+      </div>
+      <input
+        type="range"
+        min="8"
+        max="24"
+        value={fontSizeSmall}
+        onChange={el => setFontSizeSmall(parseFloat(el.target.value))}
       />
     </div>
   );

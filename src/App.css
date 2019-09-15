@@ -82,7 +82,8 @@
   --blue-800: #2c5282;
   --blue-900: #2a4365;
 
-  --font-size: 14px
+  --font-size: 14px;
+  --font-size-small: 12px;
 }
 
 html,

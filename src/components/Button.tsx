@@ -12,7 +12,7 @@ const Button: FC<{ children?: any }> = ({ children = null }) => (
       backgroundColor: "var(--button-blue-background)",
       transition: "var(--transition-normal)",
       borderRadius: "3px",
-      fontSize: "12px",
+      fontSize: 'var(--font-size-small)',
       lineHeight: "1",
       fontWeight: "bold",
       padding: "4px 6px",
