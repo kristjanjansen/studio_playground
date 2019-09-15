@@ -1,13 +1,17 @@
 import React, { FC, useState, useEffect } from "react";
 import useKeyboard from "../hooks/useKeyboard";
 
-const Counter: FC = () => {
-  const [fontSize, setFontSize] = useState(14);
-  const [fontSizeSmall, setFontSizeSmall] = useState(12);
+const Variables: FC = () => {
+  const [variables, setVariables] = useState({
+    "--font-size": 14,
+    "--font-size-small": 12,
+    "--border-radius": 12
+  });
   useEffect(() => {
-    document.documentElement.style.setProperty(`--font-size`, fontSize + "px");
-    document.documentElement.style.setProperty(`--font-size-small`, fontSizeSmall + "px");
-  }, [fontSizeSmall]);
+    Object.entries(variables).forEach(([key, value]) => {
+      document.documentElement.style.setProperty(key, value + "px");
+    });
+  }, [variables]);
 
   const pressed = useKeyboard("v");
 
@@ -26,40 +30,33 @@ const Counter: FC = () => {
         borderRadius: "4px"
       }}
     >
-      <div
-        style={{
-          fontSize: "12px",
-          paddingBottom: "10px",
-          fontFamily: "var(--font-family--code)"
-        }}
-      >
-        var(--font-size) = {fontSize}
-      </div>
-      <input
-        type="range"
-        min="8"
-        max="24"
-        value={fontSize}
-        onChange={el => setFontSize(parseFloat(el.target.value))}
-      />
-      <div
-        style={{
-          fontSize: "12px",
-          paddingBottom: "10px",
-          fontFamily: "var(--font-family--code)"
-        }}
-      >
-        var(--font-size-small) = {fontSizeSmall}
-      </div>
-      <input
-        type="range"
-        min="8"
-        max="24"
-        value={fontSizeSmall}
-        onChange={el => setFontSizeSmall(parseFloat(el.target.value))}
-      />
+      {Object.entries(variables).map(([key, value]) => (
+        <div>
+          <div
+            style={{
+              fontSize: "12px",
+              paddingBottom: "10px",
+              fontFamily: "var(--font-family--code)"
+            }}
+          >
+            {key} = {value}px
+          </div>
+          <input
+            type="range"
+            min="8"
+            max="24"
+            value={value}
+            onChange={e => {
+              const val = e.target.value;
+              setVariables(prevState => {
+                return { ...prevState, [key]: val };
+              });
+            }}
+          />
+        </div>
+      ))}
     </div>
   );
 };
 
-export default Counter;
+export default Variables;
