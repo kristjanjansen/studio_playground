@@ -32,7 +32,7 @@ const Loader: FC = () => {
   }, []);
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", position: 'relative' }}>
       <div style={{ height: "40px" }}>
         <Header />
       </div>
