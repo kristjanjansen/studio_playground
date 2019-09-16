@@ -1,3 +1,3 @@
 /// <reference types="react-scripts" />
 
-declare module 'use-key-hook'
+declare module 'use-element-position'

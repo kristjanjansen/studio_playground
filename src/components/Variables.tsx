@@ -12,7 +12,7 @@ const Variables: FC<{ variables?: Object }> = ({ variables = {} }) => {
   const [hidden, setHidden] = useState(false);
   const pressed = useKeyboard("v");
   useEffect(() => {
-    setHidden(!hidden);
+    setHidden(hidden => !hidden);
   }, [pressed]);
 
   return (
