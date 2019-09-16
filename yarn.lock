@@ -3314,6 +3314,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+easy-promise-queue@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/easy-promise-queue/-/easy-promise-queue-0.5.4.tgz#c614df35e2014b2dc7f2d90ddcd605ccc54f8deb"
+  integrity sha512-u4ejDptPhIGp/i6N54JLpv+6nY25zyWdI+GD5QMjLOLODS0y1nrs4S2peXhUDtMzGaBM+RSQCxKD9CLYPE9d9Q==
+
 ecc-jsbn@~0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"

@@ -8,7 +8,6 @@ import Table from "./components/Table";
 import TableHeader from "./components/TableHeader";
 import Toolbar from "./components/Toolbar";
 import Variables from "./components/Variables";
-import useWebSocket from 'react-use-websocket';
 
 import './App.css';
 
@@ -24,31 +23,13 @@ const processData = (data: any) => {
   });
 };
 
-const Loader: FC = () => {
+const App: FC = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("./data/data.json")
       .then(res => res.json())
       .then(data => setData(processData(data)));
   }, []);
-
-  // Websockets
-  
-  const [sendMessage, lastMessage, status] = useWebSocket(
-    "ws://localhost:9000"
-  );
-
-  useEffect(() => {
-    if (status === 1) {
-      sendMessage("aa");
-    }
-  }, [status]);
-
-  useEffect(() => {
-    if (status === 1) {
-      console.log(lastMessage.data);
-    }
-  }, [lastMessage]);
 
   return (
     <div style={{ width: "100%", position: 'relative' }}>
@@ -95,4 +76,4 @@ const Loader: FC = () => {
   );
 };
 
-export default Loader;
+export default App;
