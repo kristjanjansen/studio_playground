@@ -2,6 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import PromiseQueue from "easy-promise-queue";
 
+import Init from "./components/Init";
+
 import "./App.css";
 
 let pq = new PromiseQueue({ concurrency: 1 });
@@ -36,8 +38,8 @@ const App: FC = () => {
     }
   }, [status, sendMessage]);
 
-  // Receive messages from the backend 
-  
+  // Receive messages from the backend
+
   // useEffect(() => {
   //   if (lastMessage && lastMessage.data) {
   //     addLog(log => [...log, lastMessage.data] as []);
@@ -45,8 +47,18 @@ const App: FC = () => {
   // }, [lastMessage]);
 
   return (
-    <div style={{ width: "100%", position: "relative" }}>
-      {JSON.stringify(log)}
+    <div
+      style={{
+        width: "100%",
+        height: '100vh',
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: 'var(--gray-400)'
+      }}
+    >
+      <Init />
     </div>
   );
 };
