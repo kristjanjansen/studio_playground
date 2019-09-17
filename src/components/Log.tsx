@@ -11,7 +11,7 @@ const Log: FC<{ items?: any[] }> = ({ items = [] }) => {
         inline: "nearest"
       });
     }
-  }, [items]);
+  }, [items, open]);
 
   return (
     <div
