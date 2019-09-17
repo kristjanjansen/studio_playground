@@ -65,7 +65,7 @@ const SelectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
         </GridContainer>
       </DialogBody>
       <DialogFooter>
-        <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        &nbsp;
         <Button onClick={() => onNext()}>Next →</Button>
       </DialogFooter>
     </CardContainer>

@@ -54,9 +54,10 @@ const App: FC = () => {
   //   }
   // }, [lastMessage]);
 
-  let [step, setStep] = useState(7);
+  let [step, setStep] = useState(0);
 
   const steps = [
+    // 1 
     <SelectDb onNext={() => setStep(step + 1)} />,
     <SetupDb
       onPrev={() => setStep(step - 1)}

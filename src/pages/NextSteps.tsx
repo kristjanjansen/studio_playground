@@ -31,18 +31,21 @@ const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
             <p>
               Start the GraphQL server <b>in a new terminal window/tab</b>:
             </p>
-            <CodeContainer copy>{"cd /Users/kristjanjansen/projects\nyarn start"}</CodeContainer>
+            <CodeContainer copy>
+              {"cd /Users/kristjanjansen/projects\nyarn start"}
+            </CodeContainer>
           </li>
         </ol>
         <p style={{ marginLeft: "20px", opacity: 0.5 }}>
-          Explore sample operations and evolve the project:<br />
-          <a href="https://github.com/prisma/prisma2" target="_blank">https://github.com/prisma/prisma2</a>
+          Explore sample operations and evolve the project:
+          <br />
+          <a href="https://github.com/prisma/prisma2" target="_blank">
+            https://github.com/prisma/prisma2
+          </a>
         </p>
       </DialogBody>
-      <DialogFooter>
-        <LightButton onClick={() => onPrev()}>← Back</LightButton>
-        <Button onClick={() => onNext()}>Next →</Button>
-      </DialogFooter>    </CardContainer>
+      <DialogFooter></DialogFooter>
+    </CardContainer>
   );
 };
 

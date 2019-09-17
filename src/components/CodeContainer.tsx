@@ -4,9 +4,8 @@ import useInterval from "../hooks/useInterval";
 
 const CodeContainer: FC<{
   children?: any;
-  embedded?: boolean;
   copy?: boolean;
-}> = ({ children = null, embedded = false, copy = false }) => {
+}> = ({ children = null, copy = false }) => {
   const statuses = ["Copy", "Copied", "Error"];
 
   const [status, setStatus] = useState(0);
@@ -32,7 +31,7 @@ const CodeContainer: FC<{
         fontSize: "var(--font-size-small)",
         whiteSpace: "pre-wrap",
         padding: "10px",
-        borderRadius: embedded ? "" : "var(--card-radius-small)",
+        borderRadius: "var(--card-radius-small)",
         position: "relative"
       }}
     >

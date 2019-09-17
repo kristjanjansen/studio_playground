@@ -16,13 +16,17 @@ const Log: FC<{ items?: [] }> = ({ items = [] }) => {
         overflow: "hidden",
         opacity: 0.9,
         height: open ? '200px' : '40px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        backgroundColor: "var(--blue-900)",
+        fontFamily: "var(--font-family--code)",
+        color: "var(--blue-100)",
+        fontSize: "var(--font-size-small)",
+        whiteSpace: "pre-wrap",
+        padding: "10px",
       }}
       onClick={ () => setOpen(!open) }
     >
-      <CodeContainer embedded>
         {Array.from({ length: 20 }).map(_ => `Some sort of log message`).slice(0, open ? 20 : 1).join('\n')}
-      </CodeContainer>
     </div>
   );
 };
