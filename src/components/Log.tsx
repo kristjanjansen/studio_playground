@@ -23,19 +23,20 @@ const Log: FC<{ items?: any[] }> = ({ items = [] }) => {
         boxShadow: "inset var(--shadow-color) 0px 2px var(--shadow-blur)",
         overflow: "scroll",
         opacity: 0.9,
-        height: open ? "200px" : "40px",
+        height: open ? "200px" : "36px",
         cursor: "pointer",
         backgroundColor: "var(--blue-900)",
         fontFamily: "var(--font-family--code)",
         color: "var(--blue-100)",
         fontSize: "var(--font-size-small)",
         whiteSpace: "pre-wrap",
-        padding: "0 12px"
+        padding: "0 12px",
+        lineHeight: "22px"
       }}
       onClick={() => setOpen(!open)}
     >
       {["", ...items].join("\n")}
-      <div ref={log} style={{ height: "12px" }}></div>
+      <div ref={log} style={{ height: "8px" }}></div>
     </div>
   );
 };
