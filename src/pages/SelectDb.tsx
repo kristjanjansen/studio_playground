@@ -11,8 +11,6 @@ import MongoIcon from "../components/MongoIcon";
 import PostgresIcon from "../components/PostgresIcon";
 import SqliteIcon from "../components/SqliteIcon";
 
-import useInterval from "../hooks/useInterval";
-
 const options = [
   {
     title: "PostgreSQL",
@@ -47,7 +45,7 @@ const SelectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
       <InitHeader>Get started by selecting a database</InitHeader>
       <InitMain>
         {/* <CheckboxIcon checked={false} /> */}
-        <GridContainer>
+        <GridContainer cols="1fr 1fr">
           {options.map(({ title, subtitle, icon }, i) => (
             <CardButton
               key={i}

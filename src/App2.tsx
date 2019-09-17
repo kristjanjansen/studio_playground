@@ -3,7 +3,8 @@ import useWebSocket from "react-use-websocket";
 import PromiseQueue from "easy-promise-queue";
 
 import SelectDb from "./pages/SelectDb";
-import ConnectDb from "./pages/ConnectDb";
+import SetupDb from "./pages/SetupDb";
+import IntrospectDb from "./pages/IntrospectDb";
 import SelectKit from "./pages/SelectKit";
 
 import "./App.css";
@@ -52,8 +53,9 @@ const App: FC = () => {
 
   const steps = [
     <SelectDb onNext={() => setStep(step + 1)} />,
-    <ConnectDb onPrev={() => setStep(step - 1)} onNext={() => setStep(step + 1)} />,
-    <SelectKit onPrev={() => setStep(step - 1)} />,
+    <SetupDb onPrev={() => setStep(step - 1)} onNext={() => setStep(step + 1)} />,
+    <IntrospectDb onPrev={() => setStep(step - 1)} onDone={() => setStep(step + 1)} />,
+    <SelectKit onPrev={() => setStep(step - 2)} />,
   ]
 
   return (

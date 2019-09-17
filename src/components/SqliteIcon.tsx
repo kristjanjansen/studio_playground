@@ -27,7 +27,7 @@ const SqliteIcon: FC = () => (
         y2="25.0894"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#97D9F6" />
+        <stop stopColor="#97D9F6" />
         <stop offset="0.920245" stop-color="#0F80CC" />
         <stop offset="1" stop-color="#0F80CC" />
       </linearGradient>
