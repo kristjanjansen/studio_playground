@@ -1,10 +1,15 @@
-import React, { FC, useState } from "react";
-import CodeContainer from "./CodeContainer";
-
-const random = () => Math.random() > 0.5
+import React, { FC, useState, useEffect, useRef } from "react";
 
 const Log: FC<{ items?: [] }> = ({ items = [] }) => {
-  let [open, setOpen] = useState(false)
+  let [open, setOpen] = useState(false);
+  let log = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (log.current !== null) {
+      log.current.scrollIntoView();
+      console.log(log.current)
+    }
+  }, [items]);
+
   return (
     <div
       style={{
@@ -13,20 +18,24 @@ const Log: FC<{ items?: [] }> = ({ items = [] }) => {
         bottom: 0,
         left: 0,
         boxShadow: "inset var(--shadow-color) 0px 2px var(--shadow-blur)",
-        overflow: "hidden",
+        overflow: "scroll",
         opacity: 0.9,
-        height: open ? '200px' : '40px',
-        cursor: 'pointer',
+        height: open ? "200px" : "40px",
+        cursor: "pointer",
         backgroundColor: "var(--blue-900)",
         fontFamily: "var(--font-family--code)",
         color: "var(--blue-100)",
         fontSize: "var(--font-size-small)",
         whiteSpace: "pre-wrap",
-        padding: "10px",
+        padding: "12px"
       }}
-      onClick={ () => setOpen(!open) }
+      onClick={() => setOpen(!open)}
     >
-        {Array.from({ length: 20 }).map(_ => `Some sort of log message`).slice(0, open ? 20 : 1).join('\n')}
+      {Array.from({ length: 20 })
+        .map(_ => `Some sort of log message`)
+        .slice(0, open ? 20 : 1)
+        .join("\n")}
+      <div ref={log} />
     </div>
   );
 };
