@@ -2,9 +2,9 @@ import React, { FC, useState, useEffect } from "react";
 
 import CardContainer from "../components/CardContainer";
 import CenterContainer from "../components/CenterContainer";
-import InitHeader from "../components/InitHeader";
-import InitMain from "../components/InitMain";
-import InitFooter from "../components/InitFooter";
+import DialogHeader from "../components/DialogHeader";
+import DialogBody from "../components/DialogBody";
+import DialogFooter from "../components/DialogFooter";
 
 import useInterval from "../hooks/useInterval";
 import Progressbar from "../components/Progressbar";
@@ -30,15 +30,15 @@ const ConnectDb: FC<{
 
   return (
     <CardContainer>
-      <InitHeader>Introspecting a database</InitHeader>
-      <InitMain>
+      <DialogHeader>Introspecting a database</DialogHeader>
+      <DialogBody>
         <CenterContainer>
           <div style={{ width: "50%" }}>
             <Progressbar value={count} />
           </div>
         </CenterContainer>
-      </InitMain>
-      <InitFooter
+      </DialogBody>
+      <DialogFooter
         disabled={count !== 100}
         onPrev={() => onPrev()}
         onNext={() => onNext()}

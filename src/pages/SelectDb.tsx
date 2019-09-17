@@ -2,9 +2,9 @@ import React, { FC, useState } from "react";
 
 import CardContainer from "../components/CardContainer";
 import GridContainer from "../components/GridContainer";
-import InitHeader from "../components/InitHeader";
-import InitMain from "../components/InitMain";
-import InitFooter from "../components/InitFooter";
+import DialogHeader from "../components/DialogHeader";
+import DialogBody from "../components/DialogBody";
+import DialogFooter from "../components/DialogFooter";
 import CardButton from "../components/CardButton";
 import MysqlIcon from "../components/MysqlIcon";
 import MongoIcon from "../components/MongoIcon";
@@ -42,9 +42,8 @@ const SelectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
 
   return (
     <CardContainer>
-      <InitHeader>Get started by selecting a database</InitHeader>
-      <InitMain>
-        {/* <CheckboxIcon checked={false} /> */}
+      <DialogHeader>Get started by selecting a database</DialogHeader>
+      <DialogBody>
         <GridContainer cols="1fr 1fr">
           {options.map(({ title, subtitle, icon }, i) => (
             <CardButton
@@ -57,8 +56,8 @@ const SelectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
             />
           ))}
         </GridContainer>
-      </InitMain>
-      <InitFooter onPrev={() => onPrev()} onNext={() => onNext()} />
+      </DialogBody>
+      <DialogFooter onPrev={() => onPrev()} onNext={() => onNext()} />
     </CardContainer>
   );
 };

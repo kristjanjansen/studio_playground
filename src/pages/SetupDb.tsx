@@ -2,9 +2,9 @@ import React, { FC, useState } from "react";
 
 import CardContainer from "../components/CardContainer";
 import CenterContainer from "../components/CenterContainer";
-import InitHeader from "../components/InitHeader";
-import InitMain from "../components/InitMain";
-import InitFooter from "../components/InitFooter";
+import DialogHeader from "../components/DialogHeader";
+import DialogBody from "../components/DialogBody";
+import DialogFooter from "../components/DialogFooter";
 
 const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
@@ -13,13 +13,13 @@ const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
 
   return (
     <CardContainer>
-      <InitHeader>Enter your database details</InitHeader>
-      <InitMain>
+      <DialogHeader>Enter your database details</DialogHeader>
+      <DialogBody>
         <CardContainer>
           <CenterContainer>Database connection details</CenterContainer>
         </CardContainer>
-      </InitMain>
-      <InitFooter onPrev={() => onPrev()} onNext={() => onNext()} />
+      </DialogBody>
+      <DialogFooter onPrev={() => onPrev()} onNext={() => onNext()} />
     </CardContainer>
   );
 };

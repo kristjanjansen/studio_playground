@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import Button from "./Button";
 import LightButton from "./LightButton";
 
-const InitFooter: FC<{
+const DialogFooter: FC<{
   onPrev?: Function;
   onNext?: Function;
   disabled?: boolean;
@@ -26,4 +26,4 @@ const InitFooter: FC<{
   </div>
 );
 
-export default InitFooter;
+export default DialogFooter;

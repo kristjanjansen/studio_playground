@@ -6,6 +6,7 @@ import SelectDb from "./pages/SelectDb";
 import SetupDb from "./pages/SetupDb";
 import IntrospectDb from "./pages/IntrospectDb";
 import SelectKit from "./pages/SelectKit";
+import SelectTools from "./pages/SelectTools";
 
 import "./App.css";
 
@@ -49,14 +50,24 @@ const App: FC = () => {
   //   }
   // }, [lastMessage]);
 
-  let [step, setStep] = useState(0);
+  let [step, setStep] = useState(3);
 
   const steps = [
     <SelectDb onNext={() => setStep(step + 1)} />,
-    <SetupDb onPrev={() => setStep(step - 1)} onNext={() => setStep(step + 1)} />,
-    <IntrospectDb onPrev={() => setStep(step - 1)} onDone={() => setStep(step + 1)} />,
-    <SelectKit onPrev={() => setStep(step - 2)} />,
-  ]
+    <SetupDb
+      onPrev={() => setStep(step - 1)}
+      onNext={() => setStep(step + 1)}
+    />,
+    <IntrospectDb
+      onPrev={() => setStep(step - 1)}
+      onDone={() => setStep(step + 1)}
+    />,
+    <SelectTools
+      onPrev={() => setStep(step - 2)}
+      onNext={() => setStep(step + 1)}
+    />,
+    <SelectKit onPrev={() => setStep(step - 1)} />
+  ];
 
   return (
     <div
@@ -70,9 +81,7 @@ const App: FC = () => {
         background: "var(--gray-400)"
       }}
     >
-      <div style={{ width: "500px" }}>
-        { steps[step] }
-      </div>
+      <div style={{ width: "500px" }}>{steps[step]}</div>
     </div>
   );
 };

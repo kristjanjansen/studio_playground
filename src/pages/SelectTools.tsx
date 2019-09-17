@@ -17,55 +17,35 @@ import useInterval from "../hooks/useInterval";
 
 const options = [
   {
-    title: "PostgreSQL",
-    icon: <PostgresIcon />,
-    subtitle: "Requires a running PostgreSQL database"
+    title: "Photon",
+    icon: '',
+    subtitle: "Type-safe database client"
   },
   {
-    title: "MySQL",
-    icon: <MysqlIcon />,
-    subtitle: "Requires a running MySQL database"
+    title: "Lift",
+    icon: '',
+    subtitle: "Declarative data modeling & migrations"
   },
-  {
-    title: "SQLite",
-    icon: <SqliteIcon />,
-    subtitle: "Easiest to set up"
-  },
-  {
-    title: "MongoDB",
-    icon: <MongoIcon />,
-    subtitle: "Coming soon"
-  }
 ];
 
 const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
   onNext = () => null
 }) => {
-  // let [count, setCount] = useState(0);
 
-  // useInterval(() => {
-  //   if (count < 100) {
-  //     setCount(count + 1);
-  //   }
-  // }, 500);
-
-  // {/* <Progressbar value={count} /> */}
-
-  let [step, setStep] = useState(0);
+  let [step, setStep] = useState(-1);
 
   return (
     <CardContainer>
-      <DialogHeader>Get started by selecting a database</DialogHeader>
+      <DialogHeader>Select Prisma tools</DialogHeader>
       <DialogBody>
-        {/* <CheckboxIcon checked={false} /> */}
         <GridContainer>
           {options.map(({ title, subtitle, icon }, i) => (
             <CardButton
               key={i}
               title={title}
               subtitle={subtitle}
-              icon={icon}
+              icon={<CheckboxIcon />}
               selected={i == step}
               onClick={() => setStep(i)}
             />

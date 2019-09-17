@@ -28,8 +28,8 @@ const SqliteIcon: FC = () => (
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#97D9F6" />
-        <stop offset="0.920245" stop-color="#0F80CC" />
-        <stop offset="1" stop-color="#0F80CC" />
+        <stop offset="0.920245" stopColor="#0F80CC" />
+        <stop offset="1" stopColor="#0F80CC" />
       </linearGradient>
     </defs>
   </svg>

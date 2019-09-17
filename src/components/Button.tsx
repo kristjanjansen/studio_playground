@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-//const InitFooter: FC<{ onNext?: Function }> = ({ onNext = null }) => (
+//const DialogFooter: FC<{ onNext?: Function }> = ({ onNext = null }) => (
 
 const Button: FC<{ children?: any; onClick?: Function }> = ({
   children = null,

@@ -3,7 +3,7 @@ import Button from "./Button";
 import LightButton from "./LightButton";
 import LeftIcon from "./LeftIcon";
 
-const InitMain: FC<{ children?: any }> = ({ children = null }) => (
+const DialogBody: FC<{ children?: any }> = ({ children = null }) => (
   <div
     style={{
       background: "var(--main-background)",
@@ -19,4 +19,4 @@ const InitMain: FC<{ children?: any }> = ({ children = null }) => (
   </div>
 );
 
-export default InitMain;
+export default DialogBody;

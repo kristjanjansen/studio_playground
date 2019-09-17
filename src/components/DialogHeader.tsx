@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import CardContainer from "./CardContainer";
 
-const InitHeader: FC<{ children?: any }> = ({ children = null }) => (
+const DialogHeader: FC<{ children?: any }> = ({ children = null }) => (
   <div
     style={{
       height: "100px",
@@ -15,4 +15,4 @@ const InitHeader: FC<{ children?: any }> = ({ children = null }) => (
   </div>
 );
 
-export default InitHeader;
+export default DialogHeader;
