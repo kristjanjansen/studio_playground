@@ -24,7 +24,7 @@ const Init: FC = () => {
   return (
     <div
       style={{
-        width: "400px",
+        width: "500px",
         height: "400px"
       }}
     >
@@ -41,12 +41,12 @@ const Init: FC = () => {
               height: "100%"
             }}
           >
-            <CardButton icon={<MysqlIcon />} subtitle="b">
+            <CardButton icon={<MysqlIcon />} subtitle="Requires a running PostgreSQL database">
               a
             </CardButton>
-            <CardButton icon={<PostgresIcon />}>a</CardButton>
-            <CardButton icon={<SqliteIcon />}>a</CardButton>
-            <CardButton icon={<MongoIcon />}>a</CardButton>
+            <CardButton icon={<PostgresIcon />} subtitle="Requires a running PostgreSQL database">a</CardButton>
+            <CardButton icon={<SqliteIcon />} subtitle="Requires a running PostgreSQL database">a</CardButton>
+            <CardButton icon={<MongoIcon />} subtitle="Requires a running PostgreSQL database">a</CardButton>
           </div>
         </InitFooter>
       </CardContainer>
