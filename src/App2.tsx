@@ -80,6 +80,7 @@ const App: FC = () => {
     <GenerateTools
       onPrev={() => setStep(step - 1)}
       onDone={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
     />,
     // 7
     <NextSteps

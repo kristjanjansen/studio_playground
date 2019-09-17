@@ -10,25 +10,49 @@ import useInterval from "../hooks/useInterval";
 import Progressbar from "../components/Progressbar";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
+import { createSecureContext } from "tls";
+
+const log = [
+  { message: "Downloading the starter kit from GitHub...", delay: 0 },
+  { message: "Extracting the content to prisma_preset1...", delay: 500 },
+  { message: "Installing dependencies with: 'npm install'...", delay: 500 },
+  { message: "Preparing your database...", delay: 500 },
+  { message: "Seeding your database width: 'npm run seed'", delay: 500 },
+  { message: "Your project is ready", delay: 500 }
+];
+
+const totalDelay = log.map(({ delay }) => delay).reduce((acc, delay) => acc + delay);
+
+console.log(totalDelay)
 
 const ConnectDb: FC<{
   onPrev?: Function;
   onNext?: Function;
   onDone?: Function;
-}> = ({ onPrev = () => null, onNext = () => null, onDone = () => null }) => {
+  onLog?: Function;
+}> = ({
+  onPrev = () => null,
+  onNext = () => null,
+  onDone = () => null,
+  onLog = () => null
+}) => {
   let [count, setCount] = useState(0);
 
   useInterval(() => {
     if (count < 100) {
       setCount(count + 1);
     }
-  }, 5);
+  }, totalDelay / 100);
 
   useEffect(() => {
     if (count === 100) {
       onDone();
     }
   }, [count]);
+
+  useEffect(() => {
+    onLog(log);
+  }, []);
 
   return (
     <CardContainer>
