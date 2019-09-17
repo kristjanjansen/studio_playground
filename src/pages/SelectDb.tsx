@@ -36,11 +36,10 @@ const options = [
   }
 ];
 
-const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
+const SelectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
   onNext = () => null
 }) => {
-
   let [step, setStep] = useState(0);
 
   return (
@@ -66,4 +65,4 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
   );
 };
 
-export default Init;
+export default SelectDb;

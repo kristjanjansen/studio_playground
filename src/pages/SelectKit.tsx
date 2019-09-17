@@ -18,36 +18,35 @@ import useInterval from "../hooks/useInterval";
 const options = [
   {
     title: "GraphQL API",
-    icon: '',
+    icon: "",
     subtitle: "Basic GraphQL server with graphql-yoga"
   },
   {
     title: "GraphQL API with authentication",
-    icon: '',
+    icon: "",
     subtitle: "Basic GraphQL server with authentication"
   },
   {
     title: "GraphQL API with Apollo Server",
-    icon: '',
+    icon: "",
     subtitle: "Basic GraphQL server with apollo-server"
   },
   {
     title: "REST API",
-    icon: '',
+    icon: "",
     subtitle: "Basic REST server with express.js"
   },
   {
     title: "gRPC API",
-    icon: '',
+    icon: "",
     subtitle: " Basic gRPC server and client"
   }
 ];
 
-const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
+const SelectKit: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
   onNext = () => null
 }) => {
-  
   let [step, setStep] = useState(0);
 
   return (
@@ -57,8 +56,14 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
         {/* <CheckboxIcon checked={false} /> */}
         <GridContainer>
           {options.map(({ title, subtitle, icon }, i) => (
-            <CardButton key={i} title={title} subtitle={subtitle} icon={icon} selected={i == step}
-            onClick={() => setStep(i)} />
+            <CardButton
+              key={i}
+              title={title}
+              subtitle={subtitle}
+              icon={icon}
+              selected={i == step}
+              onClick={() => setStep(i)}
+            />
           ))}
         </GridContainer>
       </InitMain>
@@ -67,4 +72,4 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
   );
 };
 
-export default Init;
+export default SelectKit;
