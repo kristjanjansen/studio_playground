@@ -14,26 +14,26 @@ import PostgresIcon from "../components/PostgresIcon";
 import SqliteIcon from "../components/SqliteIcon";
 
 import useInterval from "../hooks/useInterval";
+import { useList } from "react-use";
 
 const options = [
   {
     title: "Photon",
-    icon: '',
+    icon: "",
     subtitle: "Type-safe database client"
   },
   {
     title: "Lift",
-    icon: '',
+    icon: "",
     subtitle: "Declarative data modeling & migrations"
-  },
+  }
 ];
 
 const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
   onNext = () => null
 }) => {
-
-  let [step, setStep] = useState(-1);
+  const [selected, { set, push }] = useList([0, 1]);
 
   return (
     <CardContainer>
@@ -45,9 +45,13 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
               key={i}
               title={title}
               subtitle={subtitle}
-              icon={<CheckboxIcon />}
-              selected={i == step}
-              onClick={() => setStep(i)}
+              icon={<CheckboxIcon checked={selected.includes(i)} />}
+              selected={selected.includes(i)}
+              onClick={() =>
+                selected.includes(i)
+                  ? set(selected.filter((_, j) => j !== i))
+                  : push(i)
+              }
             />
           ))}
         </GridContainer>

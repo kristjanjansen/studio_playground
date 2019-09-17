@@ -21,7 +21,7 @@ const DialogFooter: FC<{
       }}
     >
       <LightButton onClick={() => onPrev()}>← Back</LightButton>
-      <Button onClick={() => onNext()}>Confirm</Button>
+      <Button onClick={() => onNext()}>Next →</Button>
     </div>
   </div>
 );
