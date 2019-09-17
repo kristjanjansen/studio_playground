@@ -37,6 +37,9 @@ const App: FC = () => {
           new Promise(resolve => {
             setTimeout(() => {
               addLog(log => [...log, message] as []);
+              if (status === 1) {
+                sendMessage(message);
+              }
               resolve();
             }, delay);
           })
@@ -49,7 +52,10 @@ const App: FC = () => {
 
   const steps = [
     // 0
-    <SelectDb onNext={() => setStep(step + 1)} onLog={(l: any) => setLogBatch(l)} />,
+    <SelectDb
+      onNext={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
+    />,
     // 1
     <SetupDb
       onPrev={() => setStep(step - 1)}
