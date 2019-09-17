@@ -6,8 +6,6 @@ import InitHeader from "../components/InitHeader";
 import InitMain from "../components/InitMain";
 import InitFooter from "../components/InitFooter";
 import CardButton from "../components/CardButton";
-import Progressbar from "../components/Progressbar";
-import CheckboxIcon from "../components/CheckboxIcon";
 import MysqlIcon from "../components/MysqlIcon";
 import MongoIcon from "../components/MongoIcon";
 import PostgresIcon from "../components/PostgresIcon";
@@ -17,29 +15,24 @@ import useInterval from "../hooks/useInterval";
 
 const options = [
   {
-    title: "GraphQL API",
-    icon: '',
-    subtitle: "Basic GraphQL server with graphql-yoga"
+    title: "PostgreSQL",
+    icon: <PostgresIcon />,
+    subtitle: "Requires a running PostgreSQL database"
   },
   {
-    title: "GraphQL API with authentication",
-    icon: '',
-    subtitle: "Basic GraphQL server with authentication"
+    title: "MySQL",
+    icon: <MysqlIcon />,
+    subtitle: "Requires a running MySQL database"
   },
   {
-    title: "GraphQL API with Apollo Server",
-    icon: '',
-    subtitle: "Basic GraphQL server with apollo-server"
+    title: "SQLite",
+    icon: <SqliteIcon />,
+    subtitle: "Easiest to set up"
   },
   {
-    title: "REST API",
-    icon: '',
-    subtitle: "Basic REST server with express.js"
-  },
-  {
-    title: "gRPC API",
-    icon: '',
-    subtitle: " Basic gRPC server and client"
+    title: "MongoDB",
+    icon: <MongoIcon />,
+    subtitle: "Coming soon"
   }
 ];
 
@@ -47,18 +40,8 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
   onNext = () => null
 }) => {
-  
-  // let [count, setCount] = useState(0);
 
-  // useInterval(() => {
-  //   if (count < 100) {
-  //     setCount(count + 1);
-  //   }
-  // }, 500);
-
-  // {/* <Progressbar value={count} /> */}
-
-  //let [step, setStep] = useState(0);
+  let [step, setStep] = useState(0);
 
   return (
     <CardContainer>
@@ -67,7 +50,14 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
         {/* <CheckboxIcon checked={false} /> */}
         <GridContainer>
           {options.map(({ title, subtitle, icon }, i) => (
-            <CardButton key={i} title={title} subtitle={subtitle} icon={icon} />
+            <CardButton
+              key={i}
+              title={title}
+              subtitle={subtitle}
+              icon={icon}
+              selected={i == step}
+              onClick={() => setStep(i)}
+            />
           ))}
         </GridContainer>
       </InitMain>

@@ -2,9 +2,9 @@ import React, { FC, useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import PromiseQueue from "easy-promise-queue";
 
-import InitStepOne from "./pages/InitStepOne";
-import InitStepTwo from "./pages/InitStepTwo";
-import InitStepThree from "./pages/InitStepThree";
+import SelectDb from "./pages/SelectDb";
+import ConnectDb from "./pages/ConnectDb";
+import SelectKit from "./pages/SelectKit";
 
 import "./App.css";
 
@@ -51,9 +51,9 @@ const App: FC = () => {
   let [step, setStep] = useState(0);
 
   const steps = [
-    <InitStepOne onNext={() => setStep(step + 1)} />,
-    <InitStepTwo onPrev={() => setStep(step - 1)} onNext={() => setStep(step + 1)} />,
-    <InitStepThree onPrev={() => setStep(step - 1)} />,
+    <SelectDb onNext={() => setStep(step + 1)} />,
+    <ConnectDb onPrev={() => setStep(step - 1)} onNext={() => setStep(step + 1)} />,
+    <SelectKit onPrev={() => setStep(step - 1)} />,
   ]
 
   return (
