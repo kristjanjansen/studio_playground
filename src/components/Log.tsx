@@ -39,7 +39,7 @@ const Log: FC<{ items?: any[] }> = ({ items = [] }) => {
         fontSize: "var(--font-size-small)",
         whiteSpace: "pre-wrap",
         padding: "0 12px",
-        lineHeight: "20px"
+        lineHeight: "22px"
       }}
       onClick={() => setOpen(!open)}
     >

@@ -14,8 +14,10 @@ import Button from "../components/Button";
 const log = [
   { message: "Introspecting...", delay: 0 },
   { message: "Introspecting some more...", delay: 1000 },
-  { message: "Introspecting even more here...", delay: 1000 }
+  { message: "Introspecting even mooooore...", delay: 1000 }
 ];
+
+const totalDelay = log.map(({ delay }) => delay).reduce((acc, delay) => acc + delay) + 500
 
 const ConnectDb: FC<{
   onPrev?: Function;
@@ -34,7 +36,7 @@ const ConnectDb: FC<{
     if (count < 100) {
       setCount(count + 1);
     }
-  }, 30);
+  }, totalDelay / 100);
 
   useEffect(() => {
     if (count === 100) {

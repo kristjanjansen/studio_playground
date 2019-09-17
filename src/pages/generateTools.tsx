@@ -21,7 +21,7 @@ const log = [
   { message: "Your project is ready", delay: 500 }
 ];
 
-const totalDelay = log.map(({ delay }) => delay).reduce((acc, delay) => acc + delay);
+const totalDelay = log.map(({ delay }) => delay).reduce((acc, delay) => acc + delay) + 500
 
 const ConnectDb: FC<{
   onPrev?: Function;

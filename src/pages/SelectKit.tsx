@@ -18,7 +18,7 @@ import LightButton from "../components/LightButton";
 import Button from "../components/Button";
 
 const log = [
-  { message: "Select a starter kit", delay: 200 },
+  { message: "Select a starter kit", delay: 0 },
 ]
 
 const options = [
