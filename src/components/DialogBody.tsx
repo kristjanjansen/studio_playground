@@ -9,7 +9,7 @@ const DialogBody: FC<{ children?: any }> = ({ children = null }) => (
       background: "var(--main-background)",
       display: "flex",
       flexDirection: "column",
-      height: "350px",
+      height: "290px",
       boxShadow: "inset var(--shadow-color) 0px 2px var(--shadow-blur)",
       padding: "16px",
       overflow: 'auto'

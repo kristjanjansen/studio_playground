@@ -28,7 +28,7 @@ const CardButton: FC<{
       backgroundColor: selected ? "var(--blue-100)" : "white",
       opacity: disabled ? 0.5 : 1
     }}
-    onClick={() => onClick()}
+    onClick={() => disabled ? null : onClick()}
   >
     {icon && <div style={{ marginRight: "16px" }}>{icon}</div>}
     <div>

@@ -12,6 +12,7 @@ import NextSteps from "./pages/NextSteps";
 
 import "./App.css";
 import Log from "./components/Log";
+import SelectLanguage from "./pages/SelectLanguage";
 
 let pq = new PromiseQueue({ concurrency: 1 });
 
@@ -53,7 +54,7 @@ const App: FC = () => {
   //   }
   // }, [lastMessage]);
 
-  let [step, setStep] = useState(0);
+  let [step, setStep] = useState(7);
 
   const steps = [
     <SelectDb onNext={() => setStep(step + 1)} />,
@@ -65,8 +66,12 @@ const App: FC = () => {
       onPrev={() => setStep(step - 1)}
       onDone={() => setStep(step + 1)}
     />,
-    <SelectTools
+    <SelectLanguage
       onPrev={() => setStep(step - 2)}
+      onNext={() => setStep(step + 1)}
+    />,
+    <SelectTools
+      onPrev={() => setStep(step - 1)}
       onNext={() => setStep(step + 1)}
     />,
     <SelectKit
@@ -85,20 +90,20 @@ const App: FC = () => {
 
   return (
     <>
-    <div
-      style={{
-        width: "100%",
-        height: "100vh",
-        position: "relative",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "var(--gray-400)"
-      }}
-    >
-      <div style={{ width: "500px" }}>{steps[step]}</div>
-    </div>
-    <Log />
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          background: "var(--gray-400)"
+        }}
+      >
+        <div style={{ width: "500px" }}>{steps[step]}</div>
+      </div>
+      <Log />
     </>
   );
 };

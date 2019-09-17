@@ -17,6 +17,16 @@ import useInterval from "../hooks/useInterval";
 
 const options = [
   {
+    title: "Just Prisma client",
+    icon: "",
+    subtitle: "Just a generated client"
+  },
+  {
+    title: "Prisma client with NodeJS sample script",
+    icon: "",
+    subtitle: "Generated client with API example scripts"
+  },
+  {
     title: "GraphQL API",
     icon: "",
     subtitle: "Basic GraphQL server with graphql-yoga"

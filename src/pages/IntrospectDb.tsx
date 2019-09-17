@@ -20,7 +20,7 @@ const ConnectDb: FC<{
     if (count < 100) {
       setCount(count + 1);
     }
-  }, 50);
+  }, 10);
 
   useEffect(() => {
     if (count === 100) {
@@ -30,7 +30,7 @@ const ConnectDb: FC<{
 
   return (
     <CardContainer>
-      <DialogHeader>Introspecting a database</DialogHeader>
+      <DialogHeader>Connecting to a database</DialogHeader>
       <DialogBody>
         <CenterContainer>
           <div style={{ width: "50%" }}>
