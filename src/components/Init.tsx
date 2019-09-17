@@ -11,6 +11,7 @@ import PostgresIcon from "./PostgresIcon";
 import SqliteIcon from "./SqliteIcon";
 
 import useInterval from "../hooks/useInterval";
+import CheckboxIcon from "./CheckboxIcon";
 
 const Init: FC = () => {
   let [count, setCount] = useState(0);
@@ -32,6 +33,7 @@ const Init: FC = () => {
         <InitHeader>Hello</InitHeader>
         <InitFooter>
           {/* <Progressbar value={count} /> */}
+          <CheckboxIcon checked={false} />
           <div
             style={{
               display: "grid",
