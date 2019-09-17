@@ -19,7 +19,7 @@ const InitFooter: FC<{ children?: any }> = ({ children = null }) => (
       style={{
         display: "flex",
         justifyContent: "space-between",
-        marginTop: '16px'
+        marginTop: "20px"
       }}
     >
       <LightButton>← Back</LightButton>
