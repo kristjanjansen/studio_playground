@@ -37,7 +37,11 @@ const options = [
   }
 ];
 
-const Init: FC = () => {
+const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
+  onPrev = () => null,
+  onNext = () => null
+}) => {
+  
   // let [count, setCount] = useState(0);
 
   // useInterval(() => {
@@ -48,26 +52,15 @@ const Init: FC = () => {
 
   // {/* <Progressbar value={count} /> */}
 
+  //let [step, setStep] = useState(0);
+
   return (
     <CardContainer>
-      <InitHeader>Hello</InitHeader>
+      <InitHeader>Enter your database details</InitHeader>
       <InitMain>
-        {/* <CheckboxIcon checked={false} /> */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gridTemplateRows: "1fr 1fr",
-            gridGap: "8px",
-            height: "100%"
-          }}
-        >
-          {options.map(({ title, subtitle, icon }, i) => (
-            <CardButton key={i} title={title} subtitle={subtitle} icon={icon} />
-          ))}
-        </div>
+        <CardContainer><div style={{ display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center' }}>Database connection details</div></CardContainer>
       </InitMain>
-      <InitFooter onPrev={() => console.log("prev")} onNext={() => console.log("next")} />
+      <InitFooter onPrev={() => onPrev()} onNext={() => onNext()} />
     </CardContainer>
   );
 };
