@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 import CardContainer from "../components/CardContainer";
 import GridContainer from "../components/GridContainer";
@@ -16,6 +16,10 @@ import SqliteIcon from "../components/SqliteIcon";
 import useInterval from "../hooks/useInterval";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
+
+const log = [
+  { message: "Select a starter kit", delay: 200 },
+]
 
 const options = [
   {
@@ -55,12 +59,17 @@ const options = [
   }
 ];
 
-const SelectKit: FC<{ onPrev?: Function; onNext?: Function }> = ({
-  onPrev = () => null,
-  onNext = () => null
-}) => {
+const SelectKit: FC<{
+  onPrev?: Function;
+  onNext?: Function;
+  onLog?: Function;
+}> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
   let [step, setStep] = useState(0);
 
+  useEffect(() => {
+    onLog(log);
+  }, []);
+  
   return (
     <CardContainer>
       <DialogHeader>Select a starter kit</DialogHeader>
@@ -81,7 +90,8 @@ const SelectKit: FC<{ onPrev?: Function; onNext?: Function }> = ({
       <DialogFooter>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
         <Button onClick={() => onNext()}>Next →</Button>
-      </DialogFooter>    </CardContainer>
+      </DialogFooter>{" "}
+    </CardContainer>
   );
 };
 

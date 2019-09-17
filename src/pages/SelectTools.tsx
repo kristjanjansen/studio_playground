@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 import CardContainer from "../components/CardContainer";
 import GridContainer from "../components/GridContainer";
@@ -11,6 +11,8 @@ import CheckboxIcon from "../components/CheckboxIcon";
 import { useList } from "react-use";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
+
+const log = [{ message: 'Select Prisma tools', delay: 0}]
 
 const options = [
   {
@@ -25,12 +27,17 @@ const options = [
   }
 ];
 
-const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
-  onPrev = () => null,
-  onNext = () => null
-}) => {
+const Init: FC<{
+  onPrev?: Function;
+  onNext?: Function;
+  onLog?: Function;
+}> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
   const [selected, { set, push }] = useList([0, 1]);
 
+  useEffect(() => {
+    onLog(log);
+  }, []);
+  
   return (
     <CardContainer>
       <DialogHeader>Select Prisma tools</DialogHeader>

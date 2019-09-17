@@ -49,11 +49,12 @@ const App: FC = () => {
 
   const steps = [
     // 0
-    <SelectDb onNext={() => setStep(step + 1)} />,
+    <SelectDb onNext={() => setStep(step + 1)} onLog={(l: any) => setLogBatch(l)} />,
     // 1
     <SetupDb
       onPrev={() => setStep(step - 1)}
       onNext={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
     />,
     // 2
     <IntrospectDb
@@ -65,16 +66,19 @@ const App: FC = () => {
     <SelectLanguage
       onPrev={() => setStep(step - 2)}
       onNext={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
     />,
     // 4
     <SelectTools
       onPrev={() => setStep(step - 1)}
       onNext={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
     />,
     // 5
     <SelectKit
       onPrev={() => setStep(step - 1)}
       onNext={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
     />,
     // 6
     <GenerateTools
@@ -86,6 +90,7 @@ const App: FC = () => {
     <NextSteps
       onPrev={() => setStep(step - 2)}
       onNext={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
     />
   ];
 

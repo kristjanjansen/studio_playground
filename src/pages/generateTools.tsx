@@ -23,8 +23,6 @@ const log = [
 
 const totalDelay = log.map(({ delay }) => delay).reduce((acc, delay) => acc + delay);
 
-console.log(totalDelay)
-
 const ConnectDb: FC<{
   onPrev?: Function;
   onNext?: Function;

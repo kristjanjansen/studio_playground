@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 import CardContainer from "../components/CardContainer";
 import GridContainer from "../components/GridContainer";
@@ -12,6 +12,10 @@ import PostgresIcon from "../components/PostgresIcon";
 import SqliteIcon from "../components/SqliteIcon";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
+
+const log = [
+  { message: "Get started by selecting a database", delay: 200 },
+]
 
 const options = [
   {
@@ -40,12 +44,16 @@ const options = [
   }
 ];
 
-const SelectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
-  onPrev = () => null,
-  onNext = () => null
+const SelectDb: FC<{ onPrev?: Function; onNext?: Function; onLog?: Function }> = ({
+  onNext = () => null,
+  onLog = () => null
 }) => {
   let [step, setStep] = useState(0);
 
+  useEffect(() => {
+    onLog(log);
+  }, []);
+  
   return (
     <CardContainer>
       <DialogHeader>Get started by selecting a database</DialogHeader>

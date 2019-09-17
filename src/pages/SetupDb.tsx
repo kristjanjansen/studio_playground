@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 import CardContainer from "../components/CardContainer";
 import CenterContainer from "../components/CenterContainer";
@@ -8,10 +8,17 @@ import DialogFooter from "../components/DialogFooter";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
 
-const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
-  onPrev = () => null,
-  onNext = () => null
-}) => {
+const log = [{ message: "Enter your database details", delay: 0 }];
+
+const SetupDb: FC<{
+  onPrev?: Function;
+  onNext?: Function;
+  onLog?: Function;
+}> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
+  useEffect(() => {
+    onLog(log);
+  }, []);
+
   return (
     <CardContainer>
       <DialogHeader>Enter your database details</DialogHeader>
@@ -28,4 +35,4 @@ const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
   );
 };
 
-export default ConnectDb;
+export default SetupDb;

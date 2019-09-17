@@ -6,13 +6,12 @@ import DialogHeader from "../components/DialogHeader";
 import DialogBody from "../components/DialogBody";
 import DialogFooter from "../components/DialogFooter";
 import CodeContainer from "../components/CodeContainer";
-import LightButton from "../components/LightButton";
-import Button from "../components/Button";
 
-const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
-  onPrev = () => null,
-  onNext = () => null
-}) => {
+const ConnectDb: FC<{
+  onPrev?: Function;
+  onNext?: Function;
+  onLog?: Function;
+}> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
   return (
     <CardContainer>
       <DialogHeader>Your project is ready</DialogHeader>

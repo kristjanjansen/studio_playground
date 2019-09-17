@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 import CardContainer from "../components/CardContainer";
 import GridContainer from "../components/GridContainer";
@@ -12,6 +12,8 @@ import JsIcon from "../components/JsIcon";
 import GoIcon from "../components/GoIcon";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
+
+const log = [{ message: 'Select a language for Prima tools', delay: 0}]
 
 const options = [
   {
@@ -34,12 +36,17 @@ const options = [
   }
 ];
 
-const SelectLanguage: FC<{ onPrev?: Function; onNext?: Function }> = ({
-  onPrev = () => null,
-  onNext = () => null
-}) => {
+const SelectLanguage: FC<{
+  onPrev?: Function;
+  onNext?: Function;
+  onLog?: Function;
+}> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
   let [step, setStep] = useState(0);
 
+  useEffect(() => {
+    onLog(log);
+  }, []);
+  
   return (
     <CardContainer>
       <DialogHeader>Select a language for Prima tools</DialogHeader>
