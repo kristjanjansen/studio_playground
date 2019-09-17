@@ -5,11 +5,7 @@ const Log: FC<{ items?: any[] }> = ({ items = [] }) => {
   let log = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (log.current !== null) {
-      log.current.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest"
-      });
+      log.current.scrollIntoView();
     }
   }, [items]);
 
@@ -30,12 +26,15 @@ const Log: FC<{ items?: any[] }> = ({ items = [] }) => {
         color: "var(--blue-100)",
         fontSize: "var(--font-size-small)",
         whiteSpace: "pre-wrap",
-        padding: "0 12px"
+        padding: "12px"
       }}
       onClick={() => setOpen(!open)}
     >
-      {["", ...items].join("\n")}
-      <div ref={log} style={{ height: "12px" }}></div>
+      {Array.from({ length: 20 })
+        .map(_ => `Some sort of log message`)
+        .slice(0, open ? 20 : 1)
+        .join("\n")}
+      <div ref={log} />
     </div>
   );
 };

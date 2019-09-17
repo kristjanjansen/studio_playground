@@ -30,20 +30,20 @@ const App: FC = () => {
   const [log, addLog] = useState([]);
 
   useEffect(() => {
-    if (status === 1) {
+    //if (status === 1) {
       logfile.forEach(({ message, delay }) =>
         pq.add(
           () =>
             new Promise(resolve => {
               setTimeout(() => {
-                sendMessage(message);
+                //sendMessage(message);
                 addLog(log => [...log, message] as []);
                 resolve();
               }, delay);
             })
         )
       );
-    }
+    //}
   }, [status, sendMessage]);
 
   // Receive messages from the backend
@@ -57,32 +57,39 @@ const App: FC = () => {
   let [step, setStep] = useState(0);
 
   const steps = [
-    // 1 
+    // 0
     <SelectDb onNext={() => setStep(step + 1)} />,
+    // 1
     <SetupDb
       onPrev={() => setStep(step - 1)}
       onNext={() => setStep(step + 1)}
     />,
+    // 2
     <IntrospectDb
       onPrev={() => setStep(step - 1)}
       onDone={() => setStep(step + 1)}
     />,
+    // 3
     <SelectLanguage
       onPrev={() => setStep(step - 2)}
       onNext={() => setStep(step + 1)}
     />,
+    // 4
     <SelectTools
       onPrev={() => setStep(step - 1)}
       onNext={() => setStep(step + 1)}
     />,
+    // 5
     <SelectKit
       onPrev={() => setStep(step - 1)}
       onNext={() => setStep(step + 1)}
     />,
+    // 6
     <GenerateTools
       onPrev={() => setStep(step - 1)}
       onDone={() => setStep(step + 1)}
     />,
+    // 7
     <NextSteps
       onPrev={() => setStep(step - 2)}
       onNext={() => setStep(step + 1)}
@@ -104,7 +111,7 @@ const App: FC = () => {
       >
         <div style={{ width: "500px" }}>{steps[step]}</div>
       </div>
-      <Log />
+      <Log items={log} />
     </>
   );
 };
