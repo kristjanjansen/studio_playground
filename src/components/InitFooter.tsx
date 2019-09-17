@@ -2,17 +2,20 @@ import React, { FC } from "react";
 import Button from "./Button";
 import LightButton from "./LightButton";
 
-const InitFooter: FC<{ onPrev?: Function, onNext?: Function }> = ({ onPrev= () => null, onNext = () => null }) => (
+const InitFooter: FC<{ onPrev?: Function; onNext?: Function }> = ({
+  onPrev = () => null,
+  onNext = () => null
+}) => (
   <div
     style={{
-      background: "white",
+      background: "var(--main-background)",
       padding: "16px"
     }}
   >
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "space-between"
       }}
     >
       <LightButton onClick={() => onPrev()}>← Back</LightButton>

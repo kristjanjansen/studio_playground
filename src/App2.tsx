@@ -2,8 +2,9 @@ import React, { FC, useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import PromiseQueue from "easy-promise-queue";
 
-import InitStepOne from "./components/InitStepOne";
-import InitStepTwo from "./components/InitStepTwo";
+import InitStepOne from "./pages/InitStepOne";
+import InitStepTwo from "./pages/InitStepTwo";
+import InitStepThree from "./pages/InitStepThree";
 
 import "./App.css";
 
@@ -51,7 +52,8 @@ const App: FC = () => {
 
   const steps = [
     <InitStepOne onNext={() => setStep(step + 1)} />,
-    <InitStepTwo onPrev={() => setStep(step - 1)} />,
+    <InitStepTwo onPrev={() => setStep(step - 1)} onNext={() => setStep(step + 1)} />,
+    <InitStepThree onPrev={() => setStep(step - 1)} />,
   ]
 
   return (

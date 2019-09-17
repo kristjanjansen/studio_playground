@@ -9,9 +9,10 @@ const InitMain: FC<{ children?: any }> = ({ children = null }) => (
       background: "var(--main-background)",
       display: "flex",
       flexDirection: "column",
-      height: "250px",
+      height: "350px",
       boxShadow: "inset var(--shadow-color) 0px 2px var(--shadow-blur)",
-      padding: "16px"
+      padding: "16px",
+      overflow: 'auto'
     }}
   >
     { children }

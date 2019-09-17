@@ -1,16 +1,17 @@
 import React, { FC, useState } from "react";
 
-import CardContainer from "./CardContainer";
-import InitHeader from "./InitHeader";
-import InitMain from "./InitMain";
-import InitFooter from "./InitFooter";
-import CardButton from "./CardButton";
-import Progressbar from "./Progressbar";
-import CheckboxIcon from "./CheckboxIcon";
-import MysqlIcon from "./MysqlIcon";
-import MongoIcon from "./MongoIcon";
-import PostgresIcon from "./PostgresIcon";
-import SqliteIcon from "./SqliteIcon";
+import CardContainer from "../components/CardContainer";
+import CenterContainer from "../components/CenterContainer";
+import InitHeader from "../components/InitHeader";
+import InitMain from "../components/InitMain";
+import InitFooter from "../components/InitFooter";
+import CardButton from "../components/CardButton";
+import Progressbar from "../components/Progressbar";
+import CheckboxIcon from "../components/CheckboxIcon";
+import MysqlIcon from "../components/MysqlIcon";
+import MongoIcon from "../components/MongoIcon";
+import PostgresIcon from "../components/PostgresIcon";
+import SqliteIcon from "../components/SqliteIcon";
 
 import useInterval from "../hooks/useInterval";
 
@@ -41,7 +42,6 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
   onNext = () => null
 }) => {
-  
   // let [count, setCount] = useState(0);
 
   // useInterval(() => {
@@ -58,7 +58,9 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
     <CardContainer>
       <InitHeader>Enter your database details</InitHeader>
       <InitMain>
-        <CardContainer><div style={{ display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center' }}>Database connection details</div></CardContainer>
+        <CardContainer>
+          <CenterContainer>Database connection details</CenterContainer>
+        </CardContainer>
       </InitMain>
       <InitFooter onPrev={() => onPrev()} onNext={() => onNext()} />
     </CardContainer>

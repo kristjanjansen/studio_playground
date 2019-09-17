@@ -1,16 +1,17 @@
 import React, { FC, useState } from "react";
 
-import CardContainer from "./CardContainer";
-import InitHeader from "./InitHeader";
-import InitMain from "./InitMain";
-import InitFooter from "./InitFooter";
-import CardButton from "./CardButton";
-import Progressbar from "./Progressbar";
-import CheckboxIcon from "./CheckboxIcon";
-import MysqlIcon from "./MysqlIcon";
-import MongoIcon from "./MongoIcon";
-import PostgresIcon from "./PostgresIcon";
-import SqliteIcon from "./SqliteIcon";
+import CardContainer from "../components/CardContainer";
+import GridContainer from "../components/GridContainer";
+import InitHeader from "../components/InitHeader";
+import InitMain from "../components/InitMain";
+import InitFooter from "../components/InitFooter";
+import CardButton from "../components/CardButton";
+import Progressbar from "../components/Progressbar";
+import CheckboxIcon from "../components/CheckboxIcon";
+import MysqlIcon from "../components/MysqlIcon";
+import MongoIcon from "../components/MongoIcon";
+import PostgresIcon from "../components/PostgresIcon";
+import SqliteIcon from "../components/SqliteIcon";
 
 import useInterval from "../hooks/useInterval";
 
@@ -41,7 +42,6 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
   onNext = () => null
 }) => {
-  
   // let [count, setCount] = useState(0);
 
   // useInterval(() => {
@@ -52,26 +52,25 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
 
   // {/* <Progressbar value={count} /> */}
 
-  //let [step, setStep] = useState(0);
+  let [step, setStep] = useState(0);
 
   return (
     <CardContainer>
       <InitHeader>Get started by selecting a database</InitHeader>
       <InitMain>
         {/* <CheckboxIcon checked={false} /> */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gridTemplateRows: "1fr 1fr",
-            gridGap: "8px",
-            height: "100%"
-          }}
-        >
+        <GridContainer>
           {options.map(({ title, subtitle, icon }, i) => (
-            <CardButton key={i} title={title} subtitle={subtitle} icon={icon} />
+            <CardButton
+              key={i}
+              title={title}
+              subtitle={subtitle}
+              icon={icon}
+              selected={i == step}
+              onClick={() => setStep(i)}
+            />
           ))}
-        </div>
+        </GridContainer>
       </InitMain>
       <InitFooter onPrev={() => onPrev()} onNext={() => onNext()} />
     </CardContainer>
