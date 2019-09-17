@@ -7,8 +7,11 @@ import SetupDb from "./pages/SetupDb";
 import IntrospectDb from "./pages/IntrospectDb";
 import SelectKit from "./pages/SelectKit";
 import SelectTools from "./pages/SelectTools";
+import GenerateTools from "./pages/GenerateTools";
+import NextSteps from "./pages/NextSteps";
 
 import "./App.css";
+import Log from "./components/Log";
 
 let pq = new PromiseQueue({ concurrency: 1 });
 
@@ -50,7 +53,7 @@ const App: FC = () => {
   //   }
   // }, [lastMessage]);
 
-  let [step, setStep] = useState(3);
+  let [step, setStep] = useState(0);
 
   const steps = [
     <SelectDb onNext={() => setStep(step + 1)} />,
@@ -66,10 +69,22 @@ const App: FC = () => {
       onPrev={() => setStep(step - 2)}
       onNext={() => setStep(step + 1)}
     />,
-    <SelectKit onPrev={() => setStep(step - 1)} />
+    <SelectKit
+      onPrev={() => setStep(step - 1)}
+      onNext={() => setStep(step + 1)}
+    />,
+    <GenerateTools
+      onPrev={() => setStep(step - 1)}
+      onDone={() => setStep(step + 1)}
+    />,
+    <NextSteps
+      onPrev={() => setStep(step - 2)}
+      onNext={() => setStep(step + 1)}
+    />
   ];
 
   return (
+    <>
     <div
       style={{
         width: "100%",
@@ -83,6 +98,8 @@ const App: FC = () => {
     >
       <div style={{ width: "500px" }}>{steps[step]}</div>
     </div>
+    <Log />
+    </>
   );
 };
 
