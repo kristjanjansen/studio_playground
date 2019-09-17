@@ -1,10 +1,11 @@
 import React, { FC } from "react";
 
-const CardButton: FC<{ icon?: any; children?: any; subtitle?: any }> = ({
-  icon = null,
-  children = null,
-  subtitle = null
-}) => (
+const CardButton: FC<{
+  title?: any;
+  subtitle?: any;
+  icon?: any;
+  children?: any;
+}> = ({ title = null, subtitle = null, icon = null, children = null,  }) => (
   <div
     style={{
       backgroundColor: "white",
@@ -17,7 +18,7 @@ const CardButton: FC<{ icon?: any; children?: any; subtitle?: any }> = ({
   >
     {icon && <div style={{ marginRight: "16px" }}>{icon}</div>}
     <div>
-      <div style={{}}>{children}</div>
+      <div style={{}}>{title}</div>
       <div
         style={{
           fontSize: "var(--font-size-medium)",

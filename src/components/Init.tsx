@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 
 import CardContainer from "./CardContainer";
 import InitHeader from "./InitHeader";
-import InitFooter from "./InitFooter";
+import InitMain from "./InitMain";
 import CardButton from "./CardButton";
 import Progressbar from "./Progressbar";
 import MysqlIcon from "./MysqlIcon";
@@ -12,6 +12,29 @@ import SqliteIcon from "./SqliteIcon";
 
 import useInterval from "../hooks/useInterval";
 import CheckboxIcon from "./CheckboxIcon";
+
+const options = [
+  {
+    title: "PostgreSQL",
+    icon: <PostgresIcon />,
+    subtitle: "Requires a running PostgreSQL database"
+  },
+  {
+    title: "MySQL",
+    icon: <MysqlIcon />,
+    subtitle: "Requires a running MySQL database"
+  },
+  {
+    title: "SQLite",
+    icon: <MysqlIcon />,
+    subtitle: "Easiest to set up"
+  },
+  {
+    title: "MongoDB",
+    icon: <MongoIcon />,
+    subtitle: "Coming soon"
+  }
+];
 
 const Init: FC = () => {
   let [count, setCount] = useState(0);
@@ -31,9 +54,9 @@ const Init: FC = () => {
     >
       <CardContainer>
         <InitHeader>Hello</InitHeader>
-        <InitFooter>
+        <InitMain>
           {/* <Progressbar value={count} /> */}
-          <CheckboxIcon checked={false} />
+          {/* <CheckboxIcon checked={false} /> */}
           <div
             style={{
               display: "grid",
@@ -43,14 +66,16 @@ const Init: FC = () => {
               height: "100%"
             }}
           >
-            <CardButton icon={<MysqlIcon />} subtitle="Requires a running PostgreSQL database">
-              a
-            </CardButton>
-            <CardButton icon={<PostgresIcon />} subtitle="Requires a running PostgreSQL database">a</CardButton>
-            <CardButton icon={<SqliteIcon />} subtitle="Requires a running PostgreSQL database">a</CardButton>
-            <CardButton icon={<MongoIcon />} subtitle="Requires a running PostgreSQL database">a</CardButton>
+            {options.map(({ title, subtitle, icon }, i) => (
+              <CardButton
+                key={i}
+                title={title}
+                subtitle={subtitle}
+                icon={icon}
+              />
+            ))}
           </div>
-        </InitFooter>
+        </InitMain>
       </CardContainer>
     </div>
   );
