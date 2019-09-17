@@ -11,7 +11,15 @@ const Log: FC<{ items?: any[] }> = ({ items = [] }) => {
         inline: "nearest"
       });
     }
-  }, [items, open]);
+  }, [items]);
+  useEffect(() => {
+    if (log.current !== null) {
+      log.current.scrollIntoView({
+        block: "end",
+        inline: "nearest"
+      });
+    }
+  }, [open]);
 
   return (
     <div

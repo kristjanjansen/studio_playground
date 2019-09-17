@@ -28,31 +28,22 @@ const App: FC = () => {
   );
 
   const [log, addLog] = useState([]);
+  const [logBatch, setLogBatch] = useState([]);
 
   useEffect(() => {
-    //if (status === 1) {
-      logfile.forEach(({ message, delay }) =>
-        pq.add(
-          () =>
-            new Promise(resolve => {
-              setTimeout(() => {
-                //sendMessage(message);
-                addLog(log => [...log, message] as []);
-                resolve();
-              }, delay);
-            })
-        )
-      );
+    logBatch.forEach(({ message, delay }) =>
+      pq.add(
+        () =>
+          new Promise(resolve => {
+            setTimeout(() => {
+              addLog(log => [...log, message] as []);
+              resolve();
+            }, delay);
+          })
+      )
+    );
     //}
-  }, [status, sendMessage]);
-
-  // Receive messages from the backend
-
-  // useEffect(() => {
-  //   if (lastMessage && lastMessage.data) {
-  //     addLog(log => [...log, lastMessage.data] as []);
-  //   }
-  // }, [lastMessage]);
+  }, [logBatch]);
 
   let [step, setStep] = useState(0);
 
@@ -68,6 +59,7 @@ const App: FC = () => {
     <IntrospectDb
       onPrev={() => setStep(step - 1)}
       onDone={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
     />,
     // 3
     <SelectLanguage
