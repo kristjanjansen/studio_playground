@@ -55,10 +55,12 @@ const App: FC = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: 'var(--gray-400)'
+        background: 'var(--gray-400)',
       }}
     >
-      <Init />
+      <div style={{ width: '400px'}}>
+        <Init />
+      </div>
     </div>
   );
 };

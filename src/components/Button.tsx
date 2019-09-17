@@ -1,6 +1,11 @@
 import React, { FC } from "react";
 
-const Button: FC<{ children?: any }> = ({ children = null }) => (
+//const InitFooter: FC<{ onNext?: Function }> = ({ onNext = null }) => (
+
+const Button: FC<{ children?: any; onClick?: Function }> = ({
+  children = null,
+  onClick = () => null
+}) => (
   <div
     style={{
       display: "flex",
@@ -12,12 +17,13 @@ const Button: FC<{ children?: any }> = ({ children = null }) => (
       backgroundColor: "var(--button-blue-background)",
       transition: "var(--transition-normal)",
       borderRadius: "3px",
-      fontSize: 'var(--font-size-small)',
+      fontSize: "var(--font-size-small)",
       lineHeight: "1",
       fontWeight: "bold",
       padding: "4px 6px",
       cursor: "pointer"
     }}
+    onClick={() => onClick()}
   >
     {children}
   </div>

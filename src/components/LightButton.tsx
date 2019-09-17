@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 
-const Button: FC<{ children?: any }> = ({ children = null }) => (
-  <div
+const LightButton: FC<{ children?: any; onClick?: Function }> = ({
+  children = null,
+  onClick = () => null
+}) => (  <div
     style={{
       display: "flex",
       alignItems: "center",
@@ -18,9 +20,10 @@ const Button: FC<{ children?: any }> = ({ children = null }) => (
       margin: "0 4px",
       cursor: "pointer"
     }}
+    onClick={() => onClick()}
   >
     {children}
   </div>
 );
 
-export default Button;
+export default LightButton;

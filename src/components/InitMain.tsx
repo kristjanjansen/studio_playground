@@ -14,17 +14,7 @@ const InitFooter: FC<{ children?: any }> = ({ children = null }) => (
       padding: "16px"
     }}
   >
-    <div style={{ flex: 1 }}>{children}</div>
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        marginTop: "20px"
-      }}
-    >
-      <LightButton>← Back</LightButton>
-      <Button>Confirm</Button>
-    </div>
+    { children }
   </div>
 );
 
