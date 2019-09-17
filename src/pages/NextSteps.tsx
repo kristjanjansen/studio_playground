@@ -1,17 +1,41 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 import CardContainer from "../components/CardContainer";
-import CenterContainer from "../components/CenterContainer";
 import DialogHeader from "../components/DialogHeader";
 import DialogBody from "../components/DialogBody";
 import DialogFooter from "../components/DialogFooter";
 import CodeContainer from "../components/CodeContainer";
+
+const log = [
+  { message: " ",delay: 30 },
+  {
+    message: "1. Navigate into the project directory and start Prisma Studio",
+   delay: 30
+  },
+  { message: " ",delay: 30 },
+  { message: "    cd /Users/kristjanjansen/projects",delay: 30 },
+  { message: "    prisma2 dev",delay: 30 },
+  { message: " ",delay: 30 },
+  {
+    message: "2. Start the GraphQL server in a new terminal window / tab",
+   delay: 30
+  },
+  { message: " ",delay: 30 },
+  { message: "    cd /Users/kristjanjansen/projects",delay: 30 },
+  { message: "    prisma2 dev",delay: 30 },
+  { message: " ",delay: 30 },
+  { message: "🍺 Your project is ready", delay: 200 }
+];
 
 const ConnectDb: FC<{
   onPrev?: Function;
   onNext?: Function;
   onLog?: Function;
 }> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
+  useEffect(() => {
+    onLog(log);
+  }, []);
+
   return (
     <CardContainer>
       <DialogHeader>Your project is ready</DialogHeader>

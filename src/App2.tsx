@@ -16,12 +16,6 @@ import SelectLanguage from "./pages/SelectLanguage";
 
 let pq = new PromiseQueue({ concurrency: 1 });
 
-const logfile = [
-  { message: "Hello", delay: 1000 },
-  { message: "Yo", delay: 2000 },
-  { message: "Hm", delay: 5000 }
-];
-
 const App: FC = () => {
   const [sendMessage, lastMessage, status] = useWebSocket(
     "ws://localhost:9000"

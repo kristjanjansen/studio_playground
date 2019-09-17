@@ -5,23 +5,22 @@ import CenterContainer from "../components/CenterContainer";
 import DialogHeader from "../components/DialogHeader";
 import DialogBody from "../components/DialogBody";
 import DialogFooter from "../components/DialogFooter";
-
-import useInterval from "../hooks/useInterval";
 import Progressbar from "../components/Progressbar";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
-import { createSecureContext } from "tls";
+
+import useInterval from "../hooks/useInterval";
 
 const log = [
   { message: "Downloading the starter kit from GitHub...", delay: 0 },
   { message: "Extracting the content to prisma_preset1...", delay: 500 },
   { message: "Installing dependencies with: 'npm install'...", delay: 500 },
   { message: "Preparing your database...", delay: 500 },
-  { message: "Seeding your database width: 'npm run seed'", delay: 500 },
-  { message: "Your project is ready", delay: 500 }
+  { message: "Seeding your database width: 'npm run seed'", delay: 500 }
 ];
 
-const totalDelay = log.map(({ delay }) => delay).reduce((acc, delay) => acc + delay) + 500
+const totalDelay =
+  log.map(({ delay }) => delay).reduce((acc, delay) => acc + delay) + 500;
 
 const ConnectDb: FC<{
   onPrev?: Function;
