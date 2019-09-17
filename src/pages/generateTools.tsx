@@ -8,6 +8,8 @@ import DialogFooter from "../components/DialogFooter";
 
 import useInterval from "../hooks/useInterval";
 import Progressbar from "../components/Progressbar";
+import LightButton from "../components/LightButton";
+import Button from "../components/Button";
 
 const ConnectDb: FC<{
   onPrev?: Function;
@@ -40,9 +42,11 @@ const ConnectDb: FC<{
       </DialogBody>
       <DialogFooter
         disabled={count !== 100}
-        onPrev={() => onPrev()}
-        onNext={() => onNext()}
-      />
+        >     
+        <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        <Button onClick={() => onNext()}>Next →</Button>
+      
+      </DialogFooter>
     </CardContainer>
   );
 };

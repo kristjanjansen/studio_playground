@@ -6,6 +6,8 @@ import DialogHeader from "../components/DialogHeader";
 import DialogBody from "../components/DialogBody";
 import DialogFooter from "../components/DialogFooter";
 import CodeContainer from "../components/CodeContainer";
+import LightButton from "../components/LightButton";
+import Button from "../components/Button";
 
 const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
@@ -37,8 +39,10 @@ const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
           <a href="https://github.com/prisma/prisma2" target="_blank">https://github.com/prisma/prisma2</a>
         </p>
       </DialogBody>
-      <DialogFooter onPrev={() => onPrev()} onNext={() => onNext()} />
-    </CardContainer>
+      <DialogFooter>
+        <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        <Button onClick={() => onNext()}>Next →</Button>
+      </DialogFooter>    </CardContainer>
   );
 };
 

@@ -14,6 +14,8 @@ import PostgresIcon from "../components/PostgresIcon";
 import SqliteIcon from "../components/SqliteIcon";
 
 import useInterval from "../hooks/useInterval";
+import LightButton from "../components/LightButton";
+import Button from "../components/Button";
 
 const options = [
   {
@@ -76,8 +78,10 @@ const SelectKit: FC<{ onPrev?: Function; onNext?: Function }> = ({
           ))}
         </GridContainer>
       </DialogBody>
-      <DialogFooter onPrev={() => onPrev()} onNext={() => onNext()} />
-    </CardContainer>
+      <DialogFooter>
+        <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        <Button onClick={() => onNext()}>Next →</Button>
+      </DialogFooter>    </CardContainer>
   );
 };
 

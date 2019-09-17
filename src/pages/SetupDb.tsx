@@ -5,12 +5,13 @@ import CenterContainer from "../components/CenterContainer";
 import DialogHeader from "../components/DialogHeader";
 import DialogBody from "../components/DialogBody";
 import DialogFooter from "../components/DialogFooter";
+import LightButton from "../components/LightButton";
+import Button from "../components/Button";
 
 const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
   onPrev = () => null,
   onNext = () => null
 }) => {
-
   return (
     <CardContainer>
       <DialogHeader>Enter your database details</DialogHeader>
@@ -19,7 +20,10 @@ const ConnectDb: FC<{ onPrev?: Function; onNext?: Function }> = ({
           <CenterContainer>Database connection details</CenterContainer>
         </CardContainer>
       </DialogBody>
-      <DialogFooter onPrev={() => onPrev()} onNext={() => onNext()} />
+      <DialogFooter>
+        <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        <Button onClick={() => onNext()}>Next →</Button>
+      </DialogFooter>{" "}
     </CardContainer>
   );
 };

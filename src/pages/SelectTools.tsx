@@ -6,15 +6,11 @@ import DialogHeader from "../components/DialogHeader";
 import DialogBody from "../components/DialogBody";
 import DialogFooter from "../components/DialogFooter";
 import CardButton from "../components/CardButton";
-import Progressbar from "../components/Progressbar";
 import CheckboxIcon from "../components/CheckboxIcon";
-import MysqlIcon from "../components/MysqlIcon";
-import MongoIcon from "../components/MongoIcon";
-import PostgresIcon from "../components/PostgresIcon";
-import SqliteIcon from "../components/SqliteIcon";
 
-import useInterval from "../hooks/useInterval";
 import { useList } from "react-use";
+import LightButton from "../components/LightButton";
+import Button from "../components/Button";
 
 const options = [
   {
@@ -56,7 +52,10 @@ const Init: FC<{ onPrev?: Function; onNext?: Function }> = ({
           ))}
         </GridContainer>
       </DialogBody>
-      <DialogFooter onPrev={() => onPrev()} onNext={() => onNext()} />
+      <DialogFooter>
+        <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        <Button onClick={() => onNext()}>Next →</Button>
+      </DialogFooter>{" "}
     </CardContainer>
   );
 };

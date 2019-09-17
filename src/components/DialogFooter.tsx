@@ -2,11 +2,11 @@ import React, { FC } from "react";
 import Button from "./Button";
 import LightButton from "./LightButton";
 
+
 const DialogFooter: FC<{
-  onPrev?: Function;
-  onNext?: Function;
+  children?: any,
   disabled?: boolean;
-}> = ({ onPrev = () => null, onNext = () => null, disabled = false }) => (
+}> = ({ disabled = false,  children = null }) => (
   <div
     style={{
       background: "var(--main-background)",
@@ -20,8 +20,7 @@ const DialogFooter: FC<{
         opacity: disabled ? 0.5 : 1
       }}
     >
-      <LightButton onClick={() => onPrev()}>← Back</LightButton>
-      <Button onClick={() => onNext()}>Next →</Button>
+      { children }
     </div>
   </div>
 );

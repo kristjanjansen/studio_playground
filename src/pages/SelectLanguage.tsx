@@ -10,6 +10,8 @@ import CardButton from "../components/CardButton";
 import TsIcon from "../components/TsIcon";
 import JsIcon from "../components/JsIcon";
 import GoIcon from "../components/GoIcon";
+import LightButton from "../components/LightButton";
+import Button from "../components/Button";
 
 const options = [
   {
@@ -29,7 +31,7 @@ const options = [
     icon: <GoIcon />,
     subtitle: "Coming soon",
     disabled: true
-  },
+  }
 ];
 
 const SelectLanguage: FC<{ onPrev?: Function; onNext?: Function }> = ({
@@ -56,7 +58,10 @@ const SelectLanguage: FC<{ onPrev?: Function; onNext?: Function }> = ({
           ))}
         </GridContainer>
       </DialogBody>
-      <DialogFooter onPrev={() => onPrev()} onNext={() => onNext()} />
+      <DialogFooter>
+        <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        <Button onClick={() => onNext()}>Next →</Button>
+      </DialogFooter>
     </CardContainer>
   );
 };
