@@ -23,7 +23,7 @@ const processData = (data: any) => {
   });
 };
 
-const Loader: FC = () => {
+const App: FC = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("./data/data.json")
@@ -76,4 +76,4 @@ const Loader: FC = () => {
   );
 };
 
-export default Loader;
+export default App;

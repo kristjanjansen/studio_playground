@@ -84,9 +84,13 @@
 
   /* Dynamically set variables */
   --font-size: 14px;
+  --font-size-medium: 13px;
   --font-size-small: 12px;
   --card-radius: 8px;
   --shadow-blur: 4px;
+
+  --card-radius-small: 4px;
+
 }
 
 html,
@@ -135,4 +139,13 @@ input[type="range"]::-webkit-slider-thumb {
   background: white;
   cursor: pointer;
   background: white
+}
+
+p {
+  color: var(--gray-700);
+  font-size: var(--font-size-medium);
+}
+
+a {
+  color: var(--main-foreground);
 }
