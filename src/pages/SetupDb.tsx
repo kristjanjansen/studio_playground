@@ -9,6 +9,8 @@ import LightButton from "../components/LightButton";
 import Button from "../components/Button";
 import GridContainer from "../components/GridContainer";
 import TextInput from "../components/TextInput";
+import CheckboxIcon from "../components/CheckboxIcon";
+import CheckboxInput from "../components/CheckboxInput";
 
 const log = [{ message: "Enter your database details", delay: 0 }];
 
@@ -23,9 +25,14 @@ const SetupDb: FC<{
 
   const [connection, setConnection] = useState("mysql://...");
   const [host, setHost] = useState("127.0.0.1");
+  const [ssl, setSsl] = useState(false);
   const [port, setPort] = useState("3306");
   const [user, setUser] = useState("root");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    setConnection(`mysql://${user}${password && `:${password}`}@${host}:${port}/`)
+  },[host,port])
 
   return (
     <CardContainer>
@@ -51,6 +58,11 @@ const SetupDb: FC<{
                   onChange={(value: any) => setPort(value)}
                 />
               </GridContainer>
+              <CheckboxInput
+                title="Use SSL"
+                value={ssl}
+                onChange={(value: any) => setSsl(value)}
+              />
               <GridContainer cols="1fr 1fr">
                 <TextInput
                   title="User"
