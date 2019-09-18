@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
 import { useCopyToClipboard } from "react-use";
 import useInterval from "../hooks/useInterval";
 
@@ -10,10 +10,7 @@ const CodeContainer: FC<{
 
   const [status, setStatus] = useState(0);
 
-  const [
-    { value, error, noUserInteraction },
-    copyToClipboard
-  ] = useCopyToClipboard();
+  const [_, copyToClipboard] = useCopyToClipboard(); 
 
   useInterval(
     () => {
