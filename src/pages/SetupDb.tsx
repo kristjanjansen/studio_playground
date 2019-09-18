@@ -11,6 +11,8 @@ import GridContainer from "../components/GridContainer";
 import TextInput from "../components/TextInput";
 import CheckboxIcon from "../components/CheckboxIcon";
 import CheckboxInput from "../components/CheckboxInput";
+import CodeContainer from "../components/CodeContainer";
+import CardButton from "../components/CardButton";
 
 const log = [{ message: "Enter your database details", delay: 0 }];
 
@@ -31,53 +33,71 @@ const SetupDb: FC<{
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    setConnection(`mysql://${user}${password && `:${password}`}@${host}:${port}/`)
-  },[host,port])
+    setConnection(
+      `mysql://${user}${password && `:${password}`}@${host}:${port}/`
+    );
+  }, [host, port]);
 
   return (
     <CardContainer>
       <DialogHeader>Enter your database details</DialogHeader>
       <DialogBody>
-        <CardContainer>
-          <div style={{ padding: "12px" }}>
-            <GridContainer cols="1fr">
-              <TextInput
+        <GridContainer>
+          <CardContainer>
+            <div style={{ padding: "12px" }}>
+              <h4>Database</h4>
+              <GridContainer cols="1fr">
+                <GridContainer cols="6fr 1fr 2fr">
+                  <TextInput
+                    title="Host"
+                    value={host}
+                    onChange={(value: any) => setHost(value)}
+                  />
+                  <TextInput
+                    title="Port"
+                    value={port}
+                    onChange={(value: any) => setPort(value)}
+                  />
+                  <div style={{ alignSelf: "end" }}>
+                    <CheckboxInput
+                      title="Use SSL"
+                      value={ssl}
+                      onChange={(value: any) => setSsl(value)}
+                    />
+                  </div>
+                </GridContainer>
+                <GridContainer cols="1fr 1fr">
+                  <TextInput
+                    title="User"
+                    value={user}
+                    onChange={(value: any) => setUser(value)}
+                  />
+                  <TextInput
+                    title="Password"
+                    value={password}
+                    onChange={(value: any) => setPassword(value)}
+                  />
+                </GridContainer>
+                {/* <TextInput
                 title="Connection string"
                 value={connection}
                 onChange={(value: any) => setConnection(value)}
-              />
-              <GridContainer cols="6fr 1fr">
-                <TextInput
-                  title="Host"
-                  value={host}
-                  onChange={(value: any) => setHost(value)}
-                />
-                <TextInput
-                  title="Port"
-                  value={port}
-                  onChange={(value: any) => setPort(value)}
-                />
+              /> */}
+                {/* <CodeContainer copy>{connection}</CodeContainer> */}
               </GridContainer>
-              <CheckboxInput
-                title="Use SSL"
-                value={ssl}
-                onChange={(value: any) => setSsl(value)}
-              />
+            </div>
+          </CardContainer>
+          <CardContainer>
+            <div style={{ padding: "12px" }}>
+              <h4>Sample dataset</h4>
               <GridContainer cols="1fr 1fr">
-                <TextInput
-                  title="User"
-                  value={user}
-                  onChange={(value: any) => setUser(value)}
-                />
-                <TextInput
-                  title="Password"
-                  value={password}
-                  onChange={(value: any) => setPassword(value)}
-                />
+                {[{ title: "Random users" }, { title: "Star Wars fleet" }].map(({ title }, i) => (
+                  <CardButton selected={i === 0} title={title} />
+                ))}
               </GridContainer>
-            </GridContainer>
-          </div>
-        </CardContainer>
+            </div>
+          </CardContainer>
+        </GridContainer>
       </DialogBody>
       <DialogFooter>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
