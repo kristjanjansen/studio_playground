@@ -25,12 +25,14 @@ const SetupDb: FC<{
     onLog(log);
   }, []);
 
-  const [connection, setConnection] = useState("mysql://...");
+  const [connection, setConnection] = useState("");
   const [host, setHost] = useState("127.0.0.1");
   const [ssl, setSsl] = useState(false);
   const [port, setPort] = useState("3306");
   const [user, setUser] = useState("root");
   const [password, setPassword] = useState("");
+
+  const [dataset, setDataset] = useState(0);
 
   useEffect(() => {
     setConnection(
@@ -43,9 +45,9 @@ const SetupDb: FC<{
       <DialogHeader>Enter your database details</DialogHeader>
       <DialogBody>
         <GridContainer>
-          <CardContainer>
+            <h4>Connect to a database</h4>
+            <CardContainer>
             <div style={{ padding: "12px" }}>
-              <h4>Database</h4>
               <GridContainer cols="1fr">
                 <GridContainer cols="6fr 1fr 2fr">
                   <TextInput
@@ -85,18 +87,24 @@ const SetupDb: FC<{
               /> */}
                 {/* <CodeContainer copy>{connection}</CodeContainer> */}
               </GridContainer>
-            </div>
-          </CardContainer>
-          <CardContainer>
-            <div style={{ padding: "12px" }}>
-              <h4>Sample dataset</h4>
-              <GridContainer cols="1fr 1fr">
-                {[{ title: "Random users" }, { title: "Star Wars fleet" }].map(({ title }, i) => (
-                  <CardButton selected={i === 0} title={title} />
-                ))}
-              </GridContainer>
-            </div>
-          </CardContainer>
+              </div>
+            </CardContainer>
+          <div style={{ padding: "12px" }}>
+            <h4>Seed a sample dataset</h4>
+            <GridContainer cols="1fr 1fr 1fr">
+              {[
+                { title: "Random users" },
+                { title: "Star Wars fleet" },
+                { title: "No sample data" }
+              ].map(({ title }, i) => (
+                <CardButton
+                  selected={i === dataset}
+                  title={title}
+                  onClick={() => setDataset(i)}
+                />
+              ))}
+            </GridContainer>
+          </div>
         </GridContainer>
       </DialogBody>
       <DialogFooter>
