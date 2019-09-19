@@ -15,7 +15,7 @@ const Button: FC<{ children?: any; onClick?: Function, secondary?: boolean }> = 
       textAlign: "center",
       outline: "none",
       color: "var(--button-blue-foreground)",
-      backgroundColor: secondary ? 'var(--gray-400)' : 'var(--button-blue-background)',
+      backgroundColor: secondary ? 'var(--gray-500)' : 'var(--button-blue-background)',
       transition: "var(--transition-normal)",
       borderRadius: "3px",
       fontSize: "var(--font-size-small)",

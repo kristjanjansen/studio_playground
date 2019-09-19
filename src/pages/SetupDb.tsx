@@ -21,6 +21,7 @@ import TsIcon from "../components/TsIcon";
 import JsIcon from "../components/JsIcon";
 import GoIcon from "../components/GoIcon";
 import PlaceholderIcon from "../components/PlaceholderIcon";
+import { useList } from "react-use";
 
 const log = [{ message: "Enter your database details", delay: 0 }];
 
@@ -53,15 +54,9 @@ const dbTypes = [
 
 const kits = [
   {
-    title: "Just Prisma client",
+    title: "All Prisma tools with NodeJS sample script",
     icon: "",
-    subtitle: "Just a generated client",
-    disabled: false
-  },
-  {
-    title: "Prisma client with NodeJS sample script",
-    icon: "",
-    subtitle: "Generated client with API example scripts",
+    subtitle: "The most minimalistic setup",
     disabled: false
   },
   {
@@ -155,7 +150,7 @@ const SetupDb: FC<{
   const [password, setPassword] = useState("");
 
   const [language, setLanguage] = useState(0);
-  const [tool, setTool] = useState(0);
+  const [tool, { set: setTool, push: pushTool }] = useList([0, 1]);
   const [kit, setKit] = useState(0);
   const [dbtype, setDbtype] = useState(0);
   const [dataset, setDataset] = useState(0);
@@ -174,10 +169,11 @@ const SetupDb: FC<{
           <div>
             <h4>Select a starter kit</h4>
             <GridContainer cols="1fr">
-              {kits.map(({ title, icon, disabled }, i) => (
+              {kits.map(({ title, subtitle, icon, disabled }, i) => (
                 <CardButton
                   selected={i === kit}
                   title={title}
+                  subtitle={subtitle}
                   disabled={disabled}
                   onClick={() => setKit(i)}
                 />
@@ -203,12 +199,16 @@ const SetupDb: FC<{
             <GridContainer cols="1fr">
               {tools.map(({ title, subtitle, icon, disabled }, i) => (
                 <CardButton
-                  selected={i === tool}
                   title={title}
                   subtitle={subtitle}
-                  icon={icon}
                   disabled={disabled}
-                  onClick={() => setTool(i)}
+                  icon={<CheckboxIcon checked={tool.includes(i)} />}
+                  selected={tool.includes(i)}
+                  onClick={() =>
+                    tool.includes(i)
+                      ? setTool(tool.filter((_, j) => j !== i))
+                      : pushTool(i)
+                  }
                 />
               ))}
             </GridContainer>
@@ -217,10 +217,11 @@ const SetupDb: FC<{
           <div>
             <h4>Select a database</h4>
             <GridContainer cols="1fr">
-              {dbTypes.map(({ title, icon, disabled }, i) => (
+              {dbTypes.map(({ title, icon, disabled, subtitle }, i) => (
                 <CardButton
                   selected={i === dbtype}
                   title={title}
+                  subtitle={subtitle}
                   icon={icon}
                   disabled={disabled}
                   onClick={() => setDbtype(i)}
@@ -279,13 +280,14 @@ const SetupDb: FC<{
             <h4>Seed a sample dataset</h4>
             <GridContainer cols="1fr">
               {[
-                { title: "Random users" },
-                { title: "Star Wars fleet" },
-                { title: "No sample data" }
-              ].map(({ title }, i) => (
+                { title: "Random users", subtitle: "Alice, Bob and others" },
+                { title: "Star Wars fleet", subtitle: "All the *-Wings" },
+                { title: "No sample data", subtitle: "Enter the void" }
+              ].map(({ title, subtitle }, i) => (
                 <CardButton
                   selected={i === dataset}
                   title={title}
+                  subtitle={subtitle}
                   onClick={() => setDataset(i)}
                 />
               ))}
@@ -295,7 +297,7 @@ const SetupDb: FC<{
       </DialogBody>
       <DialogFooter>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
-        <Button onClick={() => onNext()}>Connect</Button>
+        <Button onClick={() => onNext()}>Start</Button>
       </DialogFooter>{" "}
     </CardContainer>
   );
