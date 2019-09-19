@@ -2,14 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import PromiseQueue from "easy-promise-queue";
 
-// import SelectDb from "./pages/SelectDb";
-// import IntrospectDb from "./pages/IntrospectDb";
-// import SelectKit from "./pages/SelectKit";
-// import SelectTools from "./pages/SelectTools";
-// import GenerateTools from "./pages/GenerateTools";
-// import NextSteps from "./pages/NextSteps";
-//import SelectLanguage from "./pages/SelectLanguage";
-import SetupDb from "./pages/SetupDb";
+import Starterkit from "./pages/Starterkit";
+import Introspect from "./pages/Introspect";
 
 import "./App.css";
 import Log from "./components/Log";
@@ -42,14 +36,19 @@ const App: FC = () => {
     //}
   }, [logBatch]);
 
-  let [step, setStep] = useState(0);
+  let [step, setStep] = useState(1);
 
   const steps = [
-    <SetupDb
+    <Starterkit
       onPrev={() => setStep(step - 1)}
       onNext={() => setStep(step + 1)}
       onLog={(l: any) => setLogBatch(l)}
     />,
+    <Introspect
+      onPrev={() => setStep(step - 1)}
+      onNext={() => setStep(step + 1)}
+      onLog={(l: any) => setLogBatch(l)}
+    />
   ];
 
   return (

@@ -23,7 +23,7 @@ import GoIcon from "../components/GoIcon";
 import PlaceholderIcon from "../components/PlaceholderIcon";
 import { useList } from "react-use";
 
-const log = [{ message: "Enter your database details", delay: 0 }];
+const log = [{ message: "Let's get started", delay: 200 }];
 
 const dbTypes = [
   {
