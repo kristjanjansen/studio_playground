@@ -38,21 +38,15 @@ const App: FC = () => {
     //}
   }, [logBatch]);
 
-  let [step, setStep] = useState(0);
+  let [step, setStep] = useState(1);
 
   const steps = [
     <Start
       onStep={(newStep: any) => setStep(newStep)}
       onLog={(l: any) => setLogBatch(l)}
     />,
-    <Existing
-      onPrev={() => setStep(0)}
-      onLog={(l: any) => setLogBatch(l)}
-    />,
-    <Starterkit
-      onPrev={() => setStep(0)}
-      onLog={(l: any) => setLogBatch(l)}
-    />
+    <Existing onPrev={() => setStep(0)} onLog={(l: any) => setLogBatch(l)} />,
+    <Starterkit onPrev={() => setStep(0)} onLog={(l: any) => setLogBatch(l)} />
   ];
 
   return (
@@ -68,7 +62,7 @@ const App: FC = () => {
           background: "var(--gray-400)"
         }}
       >
-        <div style={{ width: "1100px" }}>{steps[step]}</div>
+        <div style={{ width: "700px" }}>{steps[step]}</div>
       </div>
       <Log items={log} />
     </>

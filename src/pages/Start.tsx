@@ -13,6 +13,7 @@ import GoIcon from "../components/GoIcon";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
 import PlaceholderIcon from "../components/PlaceholderIcon";
+import CodeContainer from "../components/CodeContainer";
 
 const log = [{ message: "Welcome", delay: 200 }];
 
@@ -48,6 +49,27 @@ Choose this when you do not have existing data and want to just explore Prisma q
   }
 ];
 
+const languages = [
+  {
+    title: "Typescript",
+    icon: <TsIcon />,
+    subtitle: "Typescript",
+    disabled: false
+  },
+  {
+    title: "Javascript",
+    icon: <JsIcon />,
+    subtitle: "Javascript",
+    disabled: false
+  },
+  {
+    title: "Golang",
+    icon: <GoIcon />,
+    subtitle: "Coming soon",
+    disabled: true
+  }
+];
+
 const Start: FC<{
   onPrev?: Function;
   onNext?: Function;
@@ -65,12 +87,32 @@ const Start: FC<{
     onLog(log);
   }, []);
 
+  const [language, setLanguage] = useState(0);
+
   return (
     <CardContainer>
       <DialogHeader>Welcome to Prisma</DialogHeader>
       <DialogBody>
-        <div style={{ padding: "64px" }}>
-          <GridContainer cols="1fr 1fr" gap="64px">
+        <GridContainer cols="5fr 1fr 1fr 1fr">
+          <div>
+            <div>Current directory</div>
+            <div style={{ marginTop: '4px', opacity: 0.5, fontFamily: "var(--font-family--code)" }}>
+              Users/kristjanjansen/projects
+            </div>
+          </div>
+          {languages.map(({ title, icon, disabled }, i) => (
+            <CardButton
+              selected={i === language}
+              title={title}
+              icon={icon}
+              disabled={disabled}
+              onClick={() => setLanguage(i)}
+            />
+          ))}
+        </GridContainer>
+        
+        <div style={{ padding: "16px 0" }}>
+          <GridContainer cols="1fr 1fr" gap="16px">
             {options.map(({ title, subtitle, icon, disabled }, i) => (
               <CardButton
                 key={i}

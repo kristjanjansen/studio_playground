@@ -27,12 +27,6 @@ const log = [{ message: "Pick a starter kit", delay: 200 }];
 
 const dbTypes = [
   {
-    title: "SQLite",
-    icon: <SqliteIcon />,
-    subtitle: "Easiest to set up",
-    disabled: false
-  },
-  {
     title: "PostgreSQL",
     icon: <PostgresIcon />,
     subtitle: "Requires a running PostgreSQL database",
@@ -42,6 +36,12 @@ const dbTypes = [
     title: "MySQL",
     icon: <MysqlIcon />,
     subtitle: "Requires a running MySQL database",
+    disabled: false
+  },
+  {
+    title: "SQLite",
+    icon: <SqliteIcon />,
+    subtitle: "Easiest to set up",
     disabled: false
   },
   {
@@ -56,36 +56,31 @@ const kits = [
   {
     title: "All Prisma tools with NodeJS sample script",
     icon: "",
-    subtitle: `The kitchen sink of Prisma
-    
-◯ Photon  ◯ Lift  |  ◯ JS  ◯ TS | ◯ NodeJS
-`,
+    subtitle: "The most minimalistic setup",
     disabled: false
   },
   {
     title: "GraphQL API",
     icon: "",
-    subtitle: `Basic GraphQL server with graphql-yoga
-
-◯ Photon  |  ◯ JS  ◯ TS |  ◯ GraphQL 🧘Graphql-yoga
-`,
+    subtitle: "Basic GraphQL server with graphql-yoga",
     disabled: false
   },
   {
     title: "GraphQL API with authentication",
     icon: "",
-    subtitle: `Basic GraphQL server with authentication
-    ◯ Photon  |  ◯ JS  ◯ TS |  ◯ GraphQL 🧘Graphql-yoga
-`,
+    subtitle: "Basic GraphQL server with authentication",
+    disabled: false
+  },
+  {
+    title: "GraphQL API with Apollo Server",
+    icon: "",
+    subtitle: "Basic GraphQL server with apollo-server",
     disabled: false
   },
   {
     title: "REST API",
     icon: "",
-    subtitle: `Basic REST server with express.js
-
-◯ Photon  |  ◯ JS  ◯ TS |  ◯ GraphQL 🧘Graphql-yoga
-`,
+    subtitle: "Basic REST server with express.js",
     disabled: false
   },
   {
@@ -168,18 +163,65 @@ const SetupDb: FC<{
 
   return (
     <CardContainer>
-      <DialogHeader>Pick a starter kit</DialogHeader>
+      <DialogHeader>Pick a starter kit (system model of steps)</DialogHeader>
       <DialogBody>
-        <GridContainer cols="1fr" gap="16px">
+        <GridContainer cols="1fr 1fr 1fr 1fr 1fr 1fr" gap="16px">
+          <div>
+            <h4>Select a starter kit</h4>
+            <GridContainer cols="1fr">
+              {kits.map(({ title, subtitle, icon, disabled }, i) => (
+                <CardButton
+                  selected={i === kit}
+                  title={title}
+                  subtitle={subtitle}
+                  disabled={disabled}
+                  onClick={() => setKit(i)}
+                />
+              ))}
+            </GridContainer>
+          </div>
+          <div>
+            <h4>Select a language</h4>
+            <GridContainer cols="1fr">
+              {languages.map(({ title, icon, disabled }, i) => (
+                <CardButton
+                  selected={i === language}
+                  title={title}
+                  icon={icon}
+                  disabled={disabled}
+                  onClick={() => setLanguage(i)}
+                />
+              ))}
+            </GridContainer>
+          </div>
+          <div>
+            <h4>Select Prisma tools</h4>
+            <GridContainer cols="1fr">
+              {tools.map(({ title, subtitle, icon, disabled }, i) => (
+                <CardButton
+                  title={title}
+                  subtitle={subtitle}
+                  disabled={disabled}
+                  icon={<CheckboxIcon checked={tool.includes(i)} />}
+                  selected={tool.includes(i)}
+                  onClick={() =>
+                    tool.includes(i)
+                      ? setTool(tool.filter((_, j) => j !== i))
+                      : pushTool(i)
+                  }
+                />
+              ))}
+            </GridContainer>
+          </div>
 
-        <div>
+          <div>
             <h4>Select a database</h4>
-            <GridContainer cols="1fr 1fr 1fr 1fr">
+            <GridContainer cols="1fr">
               {dbTypes.map(({ title, icon, disabled, subtitle }, i) => (
                 <CardButton
                   selected={i === dbtype}
                   title={title}
-                  subtitle={''}
+                  subtitle={subtitle}
                   icon={icon}
                   disabled={disabled}
                   onClick={() => setDbtype(i)}
@@ -187,8 +229,7 @@ const SetupDb: FC<{
               ))}
             </GridContainer>
           </div>
-
-          {dbtype !== 0 && <div>
+          <div>
             <h4>Connect to a database</h4>
             <div style={{ height: "auto" }}>
               <CardContainer>
@@ -234,26 +275,10 @@ const SetupDb: FC<{
                 </div>
               </CardContainer>
             </div>
-          </div>}
-
-          <div>
-            <h4>Select a starter kit</h4>
-            <GridContainer cols="1fr">
-              {kits.map(({ title, subtitle, icon, disabled }, i) => (
-                <CardButton
-                  selected={i === kit}
-                  title={title}
-                  subtitle={subtitle}
-                  disabled={disabled}
-                  onClick={() => setKit(i)}
-                />
-              ))}
-            </GridContainer>
           </div>
-         
           <div>
             <h4>Seed a sample dataset</h4>
-            <GridContainer cols="1fr 1fr 1fr">
+            <GridContainer cols="1fr">
               {[
                 { title: "Random users", subtitle: "Alice, Bob and others" },
                 { title: "Star Wars fleet", subtitle: "All the *-Wings" },
