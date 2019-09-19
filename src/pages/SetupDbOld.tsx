@@ -157,9 +157,9 @@ const SetupDb: FC<{
 
   return (
     <CardContainer>
-      <DialogHeader>Get started with Prisma</DialogHeader>
+      <DialogHeader>Enter your database details</DialogHeader>
       <DialogBody>
-        <GridContainer cols="1fr 1fr 1fr 1fr 1fr" gap="16px">
+        <GridContainer cols="1fr">
           <div>
             <h4>Select a language</h4>
             <GridContainer cols="1fr">
@@ -200,8 +200,8 @@ const SetupDb: FC<{
             </GridContainer>
           </div>
           <div>
-            <h4>Select a database</h4>
-            <GridContainer cols="1fr">
+            <h4>Connect to a database</h4>
+            <GridContainer cols="1fr 1fr 1fr 1fr">
               {dbTypes.map(({ title, icon, disabled }, i) => (
                 <CardButton
                   selected={i === dataset}
@@ -211,57 +211,54 @@ const SetupDb: FC<{
                 />
               ))}
             </GridContainer>
-          </div>
-          <div>
-            <h4>Connect to a database</h4>
-            <div style={{ height: 'auto' }}>
-              <CardContainer>
-                <div style={{ padding: "12px" }}>
-                  <GridContainer cols="1fr">
-                    <GridContainer cols="1fr">
-                      <TextInput
-                        title="Host"
-                        value={host}
-                        onChange={(value: any) => setHost(value)}
+            <CardContainer>
+              <div style={{ padding: "12px" }}>
+                <GridContainer cols="1fr">
+                  <GridContainer cols="6fr 1fr 2fr">
+                    <TextInput
+                      title="Host"
+                      value={host}
+                      onChange={(value: any) => setHost(value)}
+                    />
+                    <TextInput
+                      title="Port"
+                      value={port}
+                      onChange={(value: any) => setPort(value)}
+                    />
+                    <div style={{ alignSelf: "end" }}>
+                      <CheckboxInput
+                        title="Use SSL"
+                        value={ssl}
+                        onChange={(value: any) => setSsl(value)}
                       />
-                      <TextInput
-                        title="Port"
-                        value={port}
-                        onChange={(value: any) => setPort(value)}
-                      />
-                      <div style={{ alignSelf: "end" }}>
-                        <CheckboxInput
-                          title="Use SSL"
-                          value={ssl}
-                          onChange={(value: any) => setSsl(value)}
-                        />
-                      </div>
-                    </GridContainer>
-                    <GridContainer cols="1fr">
-                      <TextInput
-                        title="User"
-                        value={user}
-                        onChange={(value: any) => setUser(value)}
-                      />
-                      <TextInput
-                        title="Password"
-                        value={password}
-                        onChange={(value: any) => setPassword(value)}
-                      />
-                    </GridContainer>
-                    <div
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
-                      <Button secondary>Test connection</Button>
                     </div>
                   </GridContainer>
-                </div>
-              </CardContainer>
-            </div>
-          </div>
-          <div>
+                  <GridContainer cols="1fr 1fr">
+                    <TextInput
+                      title="User"
+                      value={user}
+                      onChange={(value: any) => setUser(value)}
+                    />
+                    <TextInput
+                      title="Password"
+                      value={password}
+                      onChange={(value: any) => setPassword(value)}
+                    />
+                  </GridContainer>
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Button secondary>Test connection</Button>
+                  </div>
+                  {/* <TextInput
+                title="Connection string"
+                value={connection}
+                onChange={(value: any) => setConnection(value)}
+              /> */}
+                  {/* <CodeContainer copy>{connection}</CodeContainer> */}
+                </GridContainer>
+              </div>
+            </CardContainer>
             <h4>Seed a sample dataset</h4>
-            <GridContainer cols="1fr">
+            <GridContainer cols="1fr 1fr 1fr">
               {[
                 { title: "Random users" },
                 { title: "Star Wars fleet" },
@@ -286,10 +283,3 @@ const SetupDb: FC<{
 };
 
 export default SetupDb;
-
-/* <TextInput
-                title="Connection string"
-                value={connection}
-                onChange={(value: any) => setConnection(value)}
-              /> */
-/* <CodeContainer copy>{connection}</CodeContainer> */
