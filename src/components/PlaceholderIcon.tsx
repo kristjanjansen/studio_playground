@@ -1,10 +1,11 @@
 import React, { FC } from "react";
 
-const PlaceholderIcon: FC = () => (
+const PlaceholderIcon: FC<{ size?: string }> = ({ size = "40px" }) => (
   <svg
     width="20"
     height="20"
     viewBox="0 0 20 20"
+    style={{ width: size, height: size }}
   >
     <circle
       cx="10"

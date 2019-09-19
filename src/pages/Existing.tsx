@@ -133,6 +133,20 @@ const tools = [
   }
 ];
 
+const seeds = [
+  {
+    title: "starwars",
+    subtitle: "12 tables, 13k rows in total",
+    disabled: false
+  },
+  { title: "mytable", subtitle: "1 table, 10 rows", disabled: false },
+  {
+    title: "tmp",
+    subtitle: "Empty database, no tables, no schema. What to do here?",
+    disabled: true
+  }
+];
+
 const SetupDb: FC<{
   onPrev?: Function;
   onNext?: Function;
@@ -154,6 +168,7 @@ const SetupDb: FC<{
   const [kit, setKit] = useState(0);
   const [dbtype, setDbtype] = useState(0);
   const [dataset, setDataset] = useState(0);
+  const [script, setScript] = useState(true);
 
   useEffect(() => {
     setConnection(
@@ -163,57 +178,9 @@ const SetupDb: FC<{
 
   return (
     <CardContainer>
-      <DialogHeader>Existing database flow</DialogHeader>
+      <DialogHeader>Existing database flow (system model of steps)</DialogHeader>
       <DialogBody>
-        <GridContainer cols="1fr 1fr 1fr 1fr 1fr 1fr" gap="16px">
-          <div>
-            <h4>Select a starter kit</h4>
-            <GridContainer cols="1fr">
-              {kits.map(({ title, subtitle, icon, disabled }, i) => (
-                <CardButton
-                  selected={i === kit}
-                  title={title}
-                  subtitle={subtitle}
-                  disabled={disabled}
-                  onClick={() => setKit(i)}
-                />
-              ))}
-            </GridContainer>
-          </div>
-          <div>
-            <h4>Select a language</h4>
-            <GridContainer cols="1fr">
-              {languages.map(({ title, icon, disabled }, i) => (
-                <CardButton
-                  selected={i === language}
-                  title={title}
-                  icon={icon}
-                  disabled={disabled}
-                  onClick={() => setLanguage(i)}
-                />
-              ))}
-            </GridContainer>
-          </div>
-          <div>
-            <h4>Select Prisma tools</h4>
-            <GridContainer cols="1fr">
-              {tools.map(({ title, subtitle, icon, disabled }, i) => (
-                <CardButton
-                  title={title}
-                  subtitle={subtitle}
-                  disabled={disabled}
-                  icon={<CheckboxIcon checked={tool.includes(i)} />}
-                  selected={tool.includes(i)}
-                  onClick={() =>
-                    tool.includes(i)
-                      ? setTool(tool.filter((_, j) => j !== i))
-                      : pushTool(i)
-                  }
-                />
-              ))}
-            </GridContainer>
-          </div>
-
+        <GridContainer cols="1fr 1fr 1fr 1fr 1fr 1fr" rows="100px" gap="16px">
           <div>
             <h4>Select a database</h4>
             <GridContainer cols="1fr">
@@ -229,6 +196,7 @@ const SetupDb: FC<{
               ))}
             </GridContainer>
           </div>
+
           <div>
             <h4>Connect to a database</h4>
             <div style={{ height: "auto" }}>
@@ -276,28 +244,98 @@ const SetupDb: FC<{
               </CardContainer>
             </div>
           </div>
+
           <div>
-            <h4>Seed a sample dataset</h4>
+            <h4>Select existing schema</h4>
             <GridContainer cols="1fr">
-              {[
-                { title: "Random users", subtitle: "Alice, Bob and others" },
-                { title: "Star Wars fleet", subtitle: "All the *-Wings" },
-                { title: "No sample data", subtitle: "Enter the void" }
-              ].map(({ title, subtitle }, i) => (
+              {seeds.map(({ title, subtitle, disabled }, i) => (
                 <CardButton
                   selected={i === dataset}
                   title={title}
                   subtitle={subtitle}
+                  disabled={disabled}
                   onClick={() => setDataset(i)}
                 />
               ))}
+            </GridContainer>
+          </div>
+
+          {/* --- */}
+
+          {/*
+          <div>
+            <h4>Select a starter kit</h4>
+            <GridContainer cols="1fr">
+              {kits.map(({ title, subtitle, icon, disabled }, i) => (
+                <CardButton
+                  selected={i === kit}
+                  title={title}
+                  subtitle={subtitle}
+                  disabled={disabled}
+                  onClick={() => setKit(i)}
+                />
+              ))}
+            </GridContainer>
+          </div>
+          */}
+
+          <div>
+            <h4>Select a language</h4>
+            <GridContainer cols="1fr">
+              {languages.map(({ title, icon, disabled }, i) => (
+                <CardButton
+                  selected={i === language}
+                  title={title}
+                  icon={icon}
+                  disabled={disabled}
+                  onClick={() => setLanguage(i)}
+                />
+              ))}
+            </GridContainer>
+            <h4>Config</h4>
+            <CardContainer>
+              <div style={{ padding: "12px" }}>
+                <TextInput title="Generated code dir" value="/prisma" />
+              </div>
+            </CardContainer>
+          </div>
+
+          <div>
+            <h4>Select Prisma tools</h4>
+            <GridContainer cols="1fr">
+              {tools.map(({ title, subtitle, icon, disabled }, i) => (
+                <CardButton
+                  title={title}
+                  subtitle={subtitle}
+                  disabled={disabled}
+                  icon={<CheckboxIcon checked={tool.includes(i)} />}
+                  selected={tool.includes(i)}
+                  onClick={() =>
+                    tool.includes(i)
+                      ? setTool(tool.filter((_, j) => j !== i))
+                      : pushTool(i)
+                  }
+                />
+              ))}
+            </GridContainer>
+          </div>
+
+          <div style={{ height: "50%" }}>
+            <h4>Sample script</h4>
+            <GridContainer cols="1fr">
+              <CardButton
+                selected={script}
+                title="Install sample script"
+                subtitle="Minimalistic CLI example script"
+                icon={<CheckboxIcon checked={script} />}
+                onClick={() => setScript(!script)}
+              />
             </GridContainer>
           </div>
         </GridContainer>
       </DialogBody>
       <DialogFooter>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
-        <Button onClick={() => onNext()}>Start</Button>
       </DialogFooter>{" "}
     </CardContainer>
   );

@@ -3,10 +3,12 @@ import useWebSocket from "react-use-websocket";
 import PromiseQueue from "easy-promise-queue";
 
 import Starterkit from "./pages/Starterkit";
-import Introspect from "./pages/Introspect";
+import Existing from "./pages/Existing";
+import Start from "./pages/Start";
 
 import "./App.css";
 import Log from "./components/Log";
+import Init from "./old_pages/SelectTools";
 
 let pq = new PromiseQueue({ concurrency: 1 });
 
@@ -36,17 +38,19 @@ const App: FC = () => {
     //}
   }, [logBatch]);
 
-  let [step, setStep] = useState(1);
+  let [step, setStep] = useState(0);
 
   const steps = [
-    <Starterkit
-      onPrev={() => setStep(step - 1)}
-      onNext={() => setStep(step + 1)}
+    <Start
+      onStep={(newStep: any) => setStep(newStep)}
       onLog={(l: any) => setLogBatch(l)}
     />,
-    <Introspect
-      onPrev={() => setStep(step - 1)}
-      onNext={() => setStep(step + 1)}
+    <Existing
+      onPrev={() => setStep(0)}
+      onLog={(l: any) => setLogBatch(l)}
+    />,
+    <Starterkit
+      onPrev={() => setStep(0)}
       onLog={(l: any) => setLogBatch(l)}
     />
   ];

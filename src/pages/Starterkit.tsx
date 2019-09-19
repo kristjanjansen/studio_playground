@@ -23,7 +23,7 @@ import GoIcon from "../components/GoIcon";
 import PlaceholderIcon from "../components/PlaceholderIcon";
 import { useList } from "react-use";
 
-const log = [{ message: "Let's get started", delay: 200 }];
+const log = [{ message: "Pick a starter kit", delay: 200 }];
 
 const dbTypes = [
   {
@@ -163,7 +163,7 @@ const SetupDb: FC<{
 
   return (
     <CardContainer>
-      <DialogHeader>Get started with Prisma</DialogHeader>
+      <DialogHeader>Pick a starter kit (system model of steps)</DialogHeader>
       <DialogBody>
         <GridContainer cols="1fr 1fr 1fr 1fr 1fr 1fr" gap="16px">
           <div>
@@ -297,8 +297,7 @@ const SetupDb: FC<{
       </DialogBody>
       <DialogFooter>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
-        <Button onClick={() => onNext()}>Start</Button>
-      </DialogFooter>{" "}
+      </DialogFooter>
     </CardContainer>
   );
 };

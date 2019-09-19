@@ -26,7 +26,8 @@ const CardButton: FC<{
       padding: "16px",
       border: `2px solid ${selected ? "var(--blue-500)" : "white"}`,
       backgroundColor: selected ? "var(--blue-100)" : "white",
-      opacity: disabled ? 0.5 : 1
+      opacity: disabled ? 0.5 : 1,
+      whiteSpace: 'pre-wrap'
     }}
     onClick={() => disabled ? null : onClick()}
   >
