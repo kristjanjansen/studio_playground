@@ -147,6 +147,10 @@ const SetupDb: FC<{
   const [user, setUser] = useState("root");
   const [password, setPassword] = useState("");
 
+  const [language, setLanguage] = useState(0);
+  const [tool, setTool] = useState(0);
+  const [kit, setKit] = useState(0);
+  const [dbtype, setDbtype] = useState(0);
   const [dataset, setDataset] = useState(0);
 
   useEffect(() => {
@@ -165,11 +169,11 @@ const SetupDb: FC<{
             <GridContainer cols="1fr">
               {languages.map(({ title, icon, disabled }, i) => (
                 <CardButton
-                  selected={i === dataset}
+                  selected={i === language}
                   title={title}
                   icon={icon}
                   disabled={disabled}
-                  onClick={() => setDataset(i)}
+                  onClick={() => setLanguage(i)}
                 />
               ))}
             </GridContainer>
@@ -177,11 +181,11 @@ const SetupDb: FC<{
             <GridContainer cols="1fr">
               {tools.map(({ title, icon, disabled }, i) => (
                 <CardButton
-                  selected={i === dataset}
+                  selected={i === tool}
                   title={title}
                   icon={icon}
                   disabled={disabled}
-                  onClick={() => setDataset(i)}
+                  onClick={() => setTool(i)}
                 />
               ))}
             </GridContainer>
@@ -191,10 +195,10 @@ const SetupDb: FC<{
             <GridContainer cols="1fr">
               {kits.map(({ title, icon, disabled }, i) => (
                 <CardButton
-                  selected={i === dataset}
+                  selected={i === kit}
                   title={title}
                   disabled={disabled}
-                  onClick={() => setDataset(i)}
+                  onClick={() => setKit(i)}
                 />
               ))}
             </GridContainer>
@@ -204,10 +208,11 @@ const SetupDb: FC<{
             <GridContainer cols="1fr">
               {dbTypes.map(({ title, icon, disabled }, i) => (
                 <CardButton
-                  selected={i === dataset}
+                  selected={i === dbtype}
                   title={title}
+                  icon={icon}
                   disabled={disabled}
-                  onClick={() => setDataset(i)}
+                  onClick={() => setDbtype(i)}
                 />
               ))}
             </GridContainer>
