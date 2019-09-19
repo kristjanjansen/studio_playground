@@ -93,6 +93,7 @@ const Start: FC<{
     <CardContainer>
       <DialogHeader>Welcome to Prisma</DialogHeader>
       <DialogBody>
+        
         <GridContainer cols="5fr 1fr 1fr 1fr">
           <div>
             <div>Current directory</div>
@@ -110,7 +111,7 @@ const Start: FC<{
             />
           ))}
         </GridContainer>
-        
+
         <div style={{ padding: "16px 0" }}>
           <GridContainer cols="1fr 1fr" gap="16px">
             {options.map(({ title, subtitle, icon, disabled }, i) => (

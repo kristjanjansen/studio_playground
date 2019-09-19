@@ -170,6 +170,25 @@ const SetupDb: FC<{
     <CardContainer>
       <DialogHeader>Pick a starter kit</DialogHeader>
       <DialogBody>
+
+      <GridContainer cols="5fr 1fr 1fr 1fr">
+          <div>
+            <div>Current directory</div>
+            <div style={{ marginTop: '4px', opacity: 0.5, fontFamily: "var(--font-family--code)" }}>
+              Users/kristjanjansen/projects
+            </div>
+          </div>
+          {languages.map(({ title, icon, disabled }, i) => (
+            <CardButton
+              selected={i === language}
+              title={title}
+              icon={icon}
+              disabled={disabled}
+              onClick={() => setLanguage(i)}
+            />
+          ))}
+        </GridContainer>
+
         <GridContainer cols="1fr" gap="16px">
 
         <div>
@@ -272,6 +291,7 @@ const SetupDb: FC<{
       </DialogBody>
       <DialogFooter>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        <Button>Generate</Button>
       </DialogFooter>
     </CardContainer>
   );

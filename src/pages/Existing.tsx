@@ -178,12 +178,32 @@ const SetupDb: FC<{
 
   return (
     <CardContainer>
-      <DialogHeader>Existing database flow (system model of steps)</DialogHeader>
+      <DialogHeader>Existing database flow</DialogHeader>
       <DialogBody>
-        <GridContainer cols="1fr 1fr 1fr 1fr 1fr 1fr" rows="100px" gap="16px">
+
+      <GridContainer cols="5fr 1fr 1fr 1fr">
           <div>
+            <div>Current directory</div>
+            <div style={{ marginTop: '4px', opacity: 0.5, fontFamily: "var(--font-family--code)" }}>
+              Users/kristjanjansen/projects
+            </div>
+          </div>
+          {languages.map(({ title, icon, disabled }, i) => (
+            <CardButton
+              selected={i === language}
+              title={title}
+              icon={icon}
+              disabled={disabled}
+              onClick={() => setLanguage(i)}
+            />
+          ))}
+        </GridContainer>
+        
+        <GridContainer cols="1fr" gap="16px">
+          <div>
+            <h2>1. Set up a datasource</h2>
             <h4>Select a database</h4>
-            <GridContainer cols="1fr">
+            <GridContainer cols="1fr 1fr 1fr 1fr">
               {dbTypes.map(({ title, icon, disabled, subtitle }, i) => (
                 <CardButton
                   selected={i === dbtype}
@@ -246,6 +266,7 @@ const SetupDb: FC<{
           </div>
 
           <div>
+            <h2>2. Generate code</h2>
             <h4>Select existing schema</h4>
             <GridContainer cols="1fr">
               {seeds.map(({ title, subtitle, disabled }, i) => (
@@ -279,26 +300,14 @@ const SetupDb: FC<{
           </div>
           */}
 
-          <div>
-            <h4>Select a language</h4>
-            <GridContainer cols="1fr">
-              {languages.map(({ title, icon, disabled }, i) => (
-                <CardButton
-                  selected={i === language}
-                  title={title}
-                  icon={icon}
-                  disabled={disabled}
-                  onClick={() => setLanguage(i)}
-                />
-              ))}
-            </GridContainer>
+          {/* <div>
             <h4>Config</h4>
             <CardContainer>
               <div style={{ padding: "12px" }}>
                 <TextInput title="Generated code dir" value="/prisma" />
               </div>
             </CardContainer>
-          </div>
+          </div> */}
 
           <div>
             <h4>Select Prisma tools</h4>
@@ -336,6 +345,7 @@ const SetupDb: FC<{
       </DialogBody>
       <DialogFooter>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
+        <Button>Generate</Button>
       </DialogFooter>{" "}
     </CardContainer>
   );
