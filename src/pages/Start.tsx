@@ -19,11 +19,11 @@ const log = [{ message: "Welcome", delay: 200 }];
 
 const options = [
   {
-    title: "Generate Prisma tools",
+    title: "Add Prisma to a existing project",
     icon: <PlaceholderIcon size="64px" />,
     subtitle: `
 
-Choose this when you have an existing database and want to generate Prisma code libraries for accessing the data 
+Choose this when you have an existing database / code project and want to generate Prisma code libraries for accessing the data 
       
       
 [ Results on initial DB availabilty / port scannings ]
@@ -33,17 +33,11 @@ Choose this when you have an existing database and want to generate Prisma code 
     disabled: false
   },
   {
-    title: "Pick a starter kit",
+    title: "Create a new project",
     icon: <PlaceholderIcon size="64px" />,
     subtitle: `
 
-Choose this when you do not have existing data and want to just explore Prisma quickly
-      
-
-      
-[ List of starter kits? ]
-      
-      
+Choose this when you create a new project to try out Prisma
       `,
     disabled: false
   }
@@ -101,7 +95,7 @@ const Start: FC<{
               Users/kristjanjansen/projects
             </div>
           </div>
-          {languages.map(({ title, icon, disabled }, i) => (
+          {/* {languages.map(({ title, icon, disabled }, i) => (
             <CardButton
               selected={i === language}
               title={title}
@@ -109,7 +103,7 @@ const Start: FC<{
               disabled={disabled}
               onClick={() => setLanguage(i)}
             />
-          ))}
+          ))} */}
         </GridContainer>
 
         <div style={{ padding: "16px 0" }}>
