@@ -107,7 +107,7 @@ const App: FC = () => {
           background: "var(--gray-400)"
         }}
       >
-        <div style={{ width: "900px" }}>{steps[step]}</div>
+        <div style={{ width: "1100px" }}>{steps[step]}</div>
       </div>
       <Log items={log} />
     </>

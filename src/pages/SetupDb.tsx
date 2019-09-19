@@ -20,6 +20,7 @@ import MongoIcon from "../components/MongoIcon";
 import TsIcon from "../components/TsIcon";
 import JsIcon from "../components/JsIcon";
 import GoIcon from "../components/GoIcon";
+import PlaceholderIcon from "../components/PlaceholderIcon";
 
 const log = [{ message: "Enter your database details", delay: 0 }];
 
@@ -119,15 +120,21 @@ const languages = [
 const tools = [
   {
     title: "Photon",
-    icon: "",
+    icon: <PlaceholderIcon />,
     subtitle: "Type-safe database client",
     disabled: false
   },
   {
     title: "Lift",
-    icon: "",
+    icon: <PlaceholderIcon />,
     subtitle: "Declarative data modeling & migrations",
     disabled: false
+  },
+  {
+    title: "?",
+    icon: <PlaceholderIcon />,
+    subtitle: "Future Prisma tool",
+    disabled: true
   }
 ];
 
@@ -163,33 +170,7 @@ const SetupDb: FC<{
     <CardContainer>
       <DialogHeader>Get started with Prisma</DialogHeader>
       <DialogBody>
-        <GridContainer cols="1fr 1fr 1fr 1fr 1fr" gap="16px">
-          <div>
-            <h4>Select a language</h4>
-            <GridContainer cols="1fr">
-              {languages.map(({ title, icon, disabled }, i) => (
-                <CardButton
-                  selected={i === language}
-                  title={title}
-                  icon={icon}
-                  disabled={disabled}
-                  onClick={() => setLanguage(i)}
-                />
-              ))}
-            </GridContainer>
-            <h4>Select Prisma tools</h4>
-            <GridContainer cols="1fr">
-              {tools.map(({ title, icon, disabled }, i) => (
-                <CardButton
-                  selected={i === tool}
-                  title={title}
-                  icon={icon}
-                  disabled={disabled}
-                  onClick={() => setTool(i)}
-                />
-              ))}
-            </GridContainer>
-          </div>
+        <GridContainer cols="1fr 1fr 1fr 1fr 1fr 1fr" gap="16px">
           <div>
             <h4>Select a starter kit</h4>
             <GridContainer cols="1fr">
@@ -203,6 +184,36 @@ const SetupDb: FC<{
               ))}
             </GridContainer>
           </div>
+          <div>
+            <h4>Select a language</h4>
+            <GridContainer cols="1fr">
+              {languages.map(({ title, icon, disabled }, i) => (
+                <CardButton
+                  selected={i === language}
+                  title={title}
+                  icon={icon}
+                  disabled={disabled}
+                  onClick={() => setLanguage(i)}
+                />
+              ))}
+            </GridContainer>
+          </div>
+          <div>
+            <h4>Select Prisma tools</h4>
+            <GridContainer cols="1fr">
+              {tools.map(({ title, subtitle, icon, disabled }, i) => (
+                <CardButton
+                  selected={i === tool}
+                  title={title}
+                  subtitle={subtitle}
+                  icon={icon}
+                  disabled={disabled}
+                  onClick={() => setTool(i)}
+                />
+              ))}
+            </GridContainer>
+          </div>
+
           <div>
             <h4>Select a database</h4>
             <GridContainer cols="1fr">
@@ -219,7 +230,7 @@ const SetupDb: FC<{
           </div>
           <div>
             <h4>Connect to a database</h4>
-            <div style={{ height: 'auto' }}>
+            <div style={{ height: "auto" }}>
               <CardContainer>
                 <div style={{ padding: "12px" }}>
                   <GridContainer cols="1fr">
