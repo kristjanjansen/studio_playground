@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 
 import CardContainer from "../components/CardContainer";
 import GridContainer from "../components/GridContainer";
@@ -14,19 +14,6 @@ import Button from "../components/Button";
 
 const log = [{ message: 'Select Prisma tools', delay: 0}]
 
-const options = [
-  {
-    title: "Photon",
-    icon: "",
-    subtitle: "Type-safe database client"
-  },
-  {
-    title: "Lift",
-    icon: "",
-    subtitle: "Declarative data modeling & migrations"
-  }
-];
-
 const Init: FC<{
   onPrev?: Function;
   onNext?: Function;
@@ -38,18 +25,33 @@ const Init: FC<{
     onLog(log);
   }, []);
   
+  const options = [
+    {
+      title: "Photon",
+      icon: "",
+      subtitle: "Type-safe database client",
+      children: "a"
+    },
+    {
+      title: "Lift",
+      icon: "",
+      subtitle: "Declarative data modeling & migrations"
+    }
+  ];
+
   return (
     <CardContainer>
       <DialogHeader>Select Prisma tools</DialogHeader>
       <DialogBody>
         <GridContainer>
-          {options.map(({ title, subtitle, icon }, i) => (
+          {options.map(({ title, subtitle, icon, children }, i) => (
             <CardButton
               key={i}
               title={title}
               subtitle={subtitle}
               icon={<CheckboxIcon checked={selected.includes(i)} />}
               selected={selected.includes(i)}
+              children={children}
               onClick={() =>
                 selected.includes(i)
                   ? set(selected.filter((_, j) => j !== i))

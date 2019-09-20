@@ -10,7 +10,6 @@ import MysqlIcon from "../components/MysqlIcon";
 import MongoIcon from "../components/MongoIcon";
 import PostgresIcon from "../components/PostgresIcon";
 import SqliteIcon from "../components/SqliteIcon";
-import LightButton from "../components/LightButton";
 import Button from "../components/Button";
 
 const log = [

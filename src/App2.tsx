@@ -2,17 +2,15 @@ import React, { FC, useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import PromiseQueue from "easy-promise-queue";
 
-import SelectDb from "./pages/SelectDb";
-import SetupDb from "./pages/SetupDb";
-import IntrospectDb from "./pages/IntrospectDb";
-import SelectKit from "./pages/SelectKit";
-import SelectTools from "./pages/SelectTools";
+import Starterkit from "./pages/Starterkit";
+import Existing from "./pages/Existing";
+import Start from "./pages/Start";
 import GenerateTools from "./pages/GenerateTools";
 import NextSteps from "./pages/NextSteps";
 
 import "./App.css";
 import Log from "./components/Log";
-import SelectLanguage from "./pages/SelectLanguage";
+import Init from "./old_pages/SelectTools";
 
 let pq = new PromiseQueue({ concurrency: 1 });
 
@@ -45,53 +43,26 @@ const App: FC = () => {
   let [step, setStep] = useState(0);
 
   const steps = [
-    // 0
-    <SelectDb
-      onNext={() => setStep(step + 1)}
+    <Start
+      onStep={(newStep: any) => setStep(newStep)}
       onLog={(l: any) => setLogBatch(l)}
     />,
-    // 1
-    <SetupDb
-      onPrev={() => setStep(step - 1)}
-      onNext={() => setStep(step + 1)}
+    <Existing
+      onPrev={() => setStep(0)}
+      onNext={() => setStep(3)}
       onLog={(l: any) => setLogBatch(l)}
     />,
-    // 2
-    <IntrospectDb
-      onPrev={() => setStep(step - 1)}
-      onDone={() => setStep(step + 1)}
+    <Starterkit
+      onPrev={() => setStep(0)}
+      onNext={() => setStep(3)}
       onLog={(l: any) => setLogBatch(l)}
     />,
-    // 3
-    <SelectLanguage
-      onPrev={() => setStep(step - 2)}
-      onNext={() => setStep(step + 1)}
-      onLog={(l: any) => setLogBatch(l)}
-    />,
-    // 4
-    <SelectTools
-      onPrev={() => setStep(step - 1)}
-      onNext={() => setStep(step + 1)}
-      onLog={(l: any) => setLogBatch(l)}
-    />,
-    // 5
-    <SelectKit
-      onPrev={() => setStep(step - 1)}
-      onNext={() => setStep(step + 1)}
-      onLog={(l: any) => setLogBatch(l)}
-    />,
-    // 6
     <GenerateTools
-      onPrev={() => setStep(step - 1)}
-      onDone={() => setStep(step + 1)}
+      onPrev={() => setStep(0)}
+      onDone={() => setStep(4)}
       onLog={(l: any) => setLogBatch(l)}
     />,
-    // 7
-    <NextSteps
-      onPrev={() => setStep(step - 2)}
-      onNext={() => setStep(step + 1)}
-      onLog={(l: any) => setLogBatch(l)}
-    />
+    <NextSteps onPrev={() => setStep(0)} onLog={(l: any) => setLogBatch(l)} />
   ];
 
   return (
@@ -107,7 +78,7 @@ const App: FC = () => {
           background: "var(--gray-400)"
         }}
       >
-        <div style={{ width: "500px" }}>{steps[step]}</div>
+        <div style={{ width: "700px" }}>{steps[step]}</div>
       </div>
       <Log items={log} />
     </>

@@ -6,14 +6,6 @@ import DialogHeader from "../components/DialogHeader";
 import DialogBody from "../components/DialogBody";
 import DialogFooter from "../components/DialogFooter";
 import CardButton from "../components/CardButton";
-import Progressbar from "../components/Progressbar";
-import CheckboxIcon from "../components/CheckboxIcon";
-import MysqlIcon from "../components/MysqlIcon";
-import MongoIcon from "../components/MongoIcon";
-import PostgresIcon from "../components/PostgresIcon";
-import SqliteIcon from "../components/SqliteIcon";
-
-import useInterval from "../hooks/useInterval";
 import LightButton from "../components/LightButton";
 import Button from "../components/Button";
 

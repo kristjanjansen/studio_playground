@@ -17,7 +17,7 @@
   --input-background-color--hover: #ccd9df;
   --input-background-color--dirty: #fff3c4;
   --inline-input-background-color: #ffffff;
-  --primary-button-background-color: #3d5866;
+  --primary-button-background-color: #3D5866;
   --primary-button-text-color: #ffffff;
   --ghost-button-text-color: #3d5866;
   --separator-color: #eaeef0;
@@ -148,4 +148,11 @@ p {
 
 a {
   color: var(--main-foreground);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em 0;
+}
+h4 {
+  margin-top: 1em;
 }

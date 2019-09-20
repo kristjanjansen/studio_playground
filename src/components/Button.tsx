@@ -2,9 +2,10 @@ import React, { FC } from "react";
 
 //const DialogFooter: FC<{ onNext?: Function }> = ({ onNext = null }) => (
 
-const Button: FC<{ children?: any; onClick?: Function }> = ({
+const Button: FC<{ children?: any; onClick?: Function, secondary?: boolean }> = ({
   children = null,
-  onClick = () => null
+  onClick = () => null,
+  secondary = false
 }) => (
   <div
     style={{
@@ -14,7 +15,7 @@ const Button: FC<{ children?: any; onClick?: Function }> = ({
       textAlign: "center",
       outline: "none",
       color: "var(--button-blue-foreground)",
-      backgroundColor: "var(--button-blue-background)",
+      backgroundColor: secondary ? 'var(--gray-500)' : 'var(--button-blue-background)',
       transition: "var(--transition-normal)",
       borderRadius: "3px",
       fontSize: "var(--font-size-small)",
