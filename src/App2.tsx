@@ -38,7 +38,7 @@ const App: FC = () => {
     //}
   }, [logBatch]);
 
-  let [step, setStep] = useState(1);
+  let [step, setStep] = useState(2);
 
   const steps = [
     <Start

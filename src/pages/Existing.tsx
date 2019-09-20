@@ -3,6 +3,7 @@ import React, { FC, useEffect, useState } from "react";
 import CardContainer from "../components/CardContainer";
 import CenterContainer from "../components/CenterContainer";
 import DialogHeader from "../components/DialogHeader";
+import DialogStatus from "../components/DialogStatus";
 import DialogBody from "../components/DialogBody";
 import DialogFooter from "../components/DialogFooter";
 import LightButton from "../components/LightButton";
@@ -22,6 +23,8 @@ import JsIcon from "../components/JsIcon";
 import GoIcon from "../components/GoIcon";
 import PlaceholderIcon from "../components/PlaceholderIcon";
 import { useList } from "react-use";
+import Pagebreak from "../components/Pagebreak";
+import PlacholderContainer from "../components/PlaceholderCard";
 
 const log = [{ message: "Enter your database details", delay: 0 }];
 
@@ -41,7 +44,7 @@ const dbTypes = [
   {
     title: "SQLite",
     icon: <SqliteIcon />,
-    subtitle: "Easiest to set up",
+    subtitle: "Just a file on a disk",
     disabled: false
   },
   {
@@ -139,12 +142,12 @@ const seeds = [
     subtitle: "12 tables, 13k rows in total",
     disabled: false
   },
-  { title: "mytable", subtitle: "1 table, 10 rows", disabled: false },
-  {
-    title: "tmp",
-    subtitle: "Empty database, no tables, no schema. What to do here?",
-    disabled: true
-  }
+  { title: "mytable", subtitle: "1 table, 10 rows", disabled: false }
+  // {
+  //   title: "tmp",
+  //   subtitle: "Empty database, no tables, no schema. What to do here?",
+  //   disabled: true
+  // }
 ];
 
 const SetupDb: FC<{
@@ -167,6 +170,7 @@ const SetupDb: FC<{
   const [tool, { set: setTool, push: pushTool }] = useList([0, 1]);
   const [kit, setKit] = useState(0);
   const [dbtype, setDbtype] = useState(0);
+  const [dbfile, setDbfile] = useState("./database.db");
   const [dataset, setDataset] = useState(0);
   const [script, setScript] = useState(true);
 
@@ -179,29 +183,29 @@ const SetupDb: FC<{
   return (
     <CardContainer>
       <DialogHeader>Add Prisma to an existing project</DialogHeader>
-      <DialogBody>
-
-      <GridContainer cols="5fr 1fr 1fr 1fr">
+      <DialogStatus>
+        <GridContainer cols="2fr 3fr">
           <div>
-            <div>Current directory</div>
-            <div style={{ marginTop: '4px', opacity: 0.5, fontFamily: "var(--font-family--code)" }}>
+            <div style={{ fontSize: "var(--font-size-small)" }}>
+              Current directory
+            </div>
+            <div
+              style={{
+                marginTop: "4px",
+                opacity: 0.5,
+                fontFamily: "var(--font-family--code)"
+              }}
+            >
               Users/kristjanjansen/projects
             </div>
           </div>
-          {languages.map(({ title, icon, disabled }, i) => (
-            <CardButton
-              selected={i === language}
-              title={title}
-              icon={icon}
-              disabled={disabled}
-              onClick={() => setLanguage(i)}
-            />
-          ))}
+          <PlacholderContainer>Other info we can detect from user's working environment / CWD</PlacholderContainer>
         </GridContainer>
-        
+      </DialogStatus>
+      <DialogBody>
         <GridContainer cols="1fr" gap="16px">
           <div>
-            <h2>① Set up a datasource</h2>
+            <h2>Set up a datasource</h2>
             <h4>Select a database</h4>
             <GridContainer cols="1fr 1fr 1fr 1fr">
               {dbTypes.map(({ title, icon, disabled, subtitle }, i) => (
@@ -220,48 +224,61 @@ const SetupDb: FC<{
           <div>
             <h4>Connect to a database</h4>
             <div style={{ height: "auto" }}>
-              <CardContainer>
-                <div style={{ padding: "12px" }}>
-                  <GridContainer cols="1fr">
+              {dbtype == 2 && (
+                <CardContainer>
+                  <div style={{ padding: "12px" }}>
+                    <TextInput
+                      title="Host"
+                      value={dbfile}
+                      onChange={(value: any) => setDbfile(value)}
+                    />
+                  </div>
+                </CardContainer>
+              )}
+              {dbtype !== 2 && (
+                <CardContainer>
+                  <div style={{ padding: "12px" }}>
                     <GridContainer cols="1fr">
-                      <TextInput
-                        title="Host"
-                        value={host}
-                        onChange={(value: any) => setHost(value)}
-                      />
-                      <TextInput
-                        title="Port"
-                        value={port}
-                        onChange={(value: any) => setPort(value)}
-                      />
-                      <div style={{ alignSelf: "end" }}>
-                        <CheckboxInput
-                          title="Use SSL"
-                          value={ssl}
-                          onChange={(value: any) => setSsl(value)}
+                      <GridContainer cols="1fr">
+                        <TextInput
+                          title="Host"
+                          value={host}
+                          onChange={(value: any) => setHost(value)}
                         />
+                        <TextInput
+                          title="Port"
+                          value={port}
+                          onChange={(value: any) => setPort(value)}
+                        />
+                        <div style={{ alignSelf: "end" }}>
+                          <CheckboxInput
+                            title="Use SSL"
+                            value={ssl}
+                            onChange={(value: any) => setSsl(value)}
+                          />
+                        </div>
+                      </GridContainer>
+                      <GridContainer cols="1fr">
+                        <TextInput
+                          title="User"
+                          value={user}
+                          onChange={(value: any) => setUser(value)}
+                        />
+                        <TextInput
+                          title="Password"
+                          value={password}
+                          onChange={(value: any) => setPassword(value)}
+                        />
+                      </GridContainer>
+                      <div
+                        style={{ display: "flex", justifyContent: "flex-end" }}
+                      >
+                        <Button secondary>Test connection</Button>
                       </div>
                     </GridContainer>
-                    <GridContainer cols="1fr">
-                      <TextInput
-                        title="User"
-                        value={user}
-                        onChange={(value: any) => setUser(value)}
-                      />
-                      <TextInput
-                        title="Password"
-                        value={password}
-                        onChange={(value: any) => setPassword(value)}
-                      />
-                    </GridContainer>
-                    <div
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
-                      <Button secondary>Test connection</Button>
-                    </div>
-                  </GridContainer>
-                </div>
-              </CardContainer>
+                  </div>
+                </CardContainer>
+              )}
             </div>
           </div>
 
@@ -308,8 +325,9 @@ const SetupDb: FC<{
             </CardContainer>
           </div> */}
 
+          <Pagebreak />
           <div>
-            <h3>② Generate code</h3>
+            <h2>Generate code</h2>
             <h4>Select Prisma tools</h4>
             <GridContainer cols="1fr 1fr 1fr">
               {tools.map(({ title, subtitle, icon, disabled }, i) => (
@@ -329,18 +347,32 @@ const SetupDb: FC<{
             </GridContainer>
           </div>
 
-          <div style={{ height: "50%" }}>
-            <h4>Sample script</h4>
-            <GridContainer cols="1fr">
-              <CardButton
-                selected={script}
-                title="Install sample script"
-                subtitle="Minimalistic CLI example script"
-                icon={<CheckboxIcon checked={script} />}
-                onClick={() => setScript(!script)}
-              />
-            </GridContainer>
-          </div>
+          {tool.includes(0) && (
+            <div style={{ height: "50%", marginLeft: "32px" }}>
+              <h4>Select a language</h4>
+              <GridContainer cols="1fr 1fr 1fr">
+                {languages.map(({ title, icon, disabled }, i) => (
+                  <CardButton
+                    selected={i === language}
+                    title={title}
+                    icon={icon}
+                    disabled={disabled}
+                    onClick={() => setLanguage(i)}
+                  />
+                ))}
+              </GridContainer>
+              <h4>Photon sample script</h4>
+              <GridContainer cols="1fr">
+                <CardButton
+                  selected={script}
+                  title="Install sample script"
+                  subtitle="Minimalistic CLI example script"
+                  icon={<CheckboxIcon checked={script} />}
+                  onClick={() => setScript(!script)}
+                />
+              </GridContainer>
+            </div>
+          )}
         </GridContainer>
       </DialogBody>
       <DialogFooter>

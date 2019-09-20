@@ -22,6 +22,8 @@ import JsIcon from "../components/JsIcon";
 import GoIcon from "../components/GoIcon";
 import PlaceholderIcon from "../components/PlaceholderIcon";
 import { useList } from "react-use";
+import PlacholderContainer from "../components/PlaceholderCard";
+import DialogStatus from "../components/DialogStatus";
 
 const log = [{ message: "Pick a starter kit", delay: 200 }];
 
@@ -169,15 +171,29 @@ const SetupDb: FC<{
   return (
     <CardContainer>
       <DialogHeader>Pick a starter kit</DialogHeader>
-      <DialogBody>
-
-      <GridContainer cols="5fr 1fr 1fr 1fr">
+      <DialogStatus>
+        <GridContainer cols="2fr 3fr">
           <div>
-            <div>Current directory</div>
-            <div style={{ marginTop: '4px', opacity: 0.5, fontFamily: "var(--font-family--code)" }}>
+            <div style={{ fontSize: "var(--font-size-small)" }}>
+              Current directory
+            </div>
+            <div
+              style={{
+                marginTop: "4px",
+                opacity: 0.5,
+                fontFamily: "var(--font-family--code)"
+              }}
+            >
               Users/kristjanjansen/projects
             </div>
           </div>
+          <PlacholderContainer>Other info we can detect from user's working environment / CWD. Perhaps also results on DB availabilty / port scannings?</PlacholderContainer>
+        </GridContainer>
+      </DialogStatus>
+      <DialogBody>
+      <h4>Select a language</h4>
+
+        <GridContainer cols="1fr 1fr 1fr">
           {languages.map(({ title, icon, disabled }, i) => (
             <CardButton
               selected={i === language}
@@ -190,15 +206,14 @@ const SetupDb: FC<{
         </GridContainer>
 
         <GridContainer cols="1fr" gap="16px">
-
-        <div>
+          <div>
             <h4>Select a database</h4>
             <GridContainer cols="1fr 1fr 1fr 1fr">
               {dbTypes.map(({ title, icon, disabled, subtitle }, i) => (
                 <CardButton
                   selected={i === dbtype}
                   title={title}
-                  subtitle={''}
+                  subtitle={""}
                   icon={icon}
                   disabled={disabled}
                   onClick={() => setDbtype(i)}
@@ -207,53 +222,55 @@ const SetupDb: FC<{
             </GridContainer>
           </div>
 
-          {dbtype !== 0 && <div>
-            <h4>Connect to a database</h4>
-            <div style={{ height: "auto" }}>
-              <CardContainer>
-                <div style={{ padding: "12px" }}>
-                  <GridContainer cols="1fr">
+          {dbtype !== 0 && (
+            <div>
+              <h4>Connect to a database</h4>
+              <div style={{ height: "auto" }}>
+                <CardContainer>
+                  <div style={{ padding: "12px" }}>
                     <GridContainer cols="1fr">
-                      <TextInput
-                        title="Host"
-                        value={host}
-                        onChange={(value: any) => setHost(value)}
-                      />
-                      <TextInput
-                        title="Port"
-                        value={port}
-                        onChange={(value: any) => setPort(value)}
-                      />
-                      <div style={{ alignSelf: "end" }}>
-                        <CheckboxInput
-                          title="Use SSL"
-                          value={ssl}
-                          onChange={(value: any) => setSsl(value)}
+                      <GridContainer cols="1fr">
+                        <TextInput
+                          title="Host"
+                          value={host}
+                          onChange={(value: any) => setHost(value)}
                         />
+                        <TextInput
+                          title="Port"
+                          value={port}
+                          onChange={(value: any) => setPort(value)}
+                        />
+                        <div style={{ alignSelf: "end" }}>
+                          <CheckboxInput
+                            title="Use SSL"
+                            value={ssl}
+                            onChange={(value: any) => setSsl(value)}
+                          />
+                        </div>
+                      </GridContainer>
+                      <GridContainer cols="1fr">
+                        <TextInput
+                          title="User"
+                          value={user}
+                          onChange={(value: any) => setUser(value)}
+                        />
+                        <TextInput
+                          title="Password"
+                          value={password}
+                          onChange={(value: any) => setPassword(value)}
+                        />
+                      </GridContainer>
+                      <div
+                        style={{ display: "flex", justifyContent: "flex-end" }}
+                      >
+                        <Button secondary>Test connection</Button>
                       </div>
                     </GridContainer>
-                    <GridContainer cols="1fr">
-                      <TextInput
-                        title="User"
-                        value={user}
-                        onChange={(value: any) => setUser(value)}
-                      />
-                      <TextInput
-                        title="Password"
-                        value={password}
-                        onChange={(value: any) => setPassword(value)}
-                      />
-                    </GridContainer>
-                    <div
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
-                      <Button secondary>Test connection</Button>
-                    </div>
-                  </GridContainer>
-                </div>
-              </CardContainer>
+                  </div>
+                </CardContainer>
+              </div>
             </div>
-          </div>}
+          )}
 
           <div>
             <h4>Select a starter kit</h4>
@@ -269,7 +286,7 @@ const SetupDb: FC<{
               ))}
             </GridContainer>
           </div>
-         
+
           <div>
             <h4>Seed a sample dataset (future feature)</h4>
             <GridContainer cols="1fr 1fr 1fr">

@@ -15,6 +15,8 @@ import Button from "../components/Button";
 import PlaceholderIcon from "../components/PlaceholderIcon";
 import CodeContainer from "../components/CodeContainer";
 import PlaceholderCard from "../components/PlaceholderCard";
+import DialogStatus from "../components/DialogStatus";
+import PlacholderContainer from "../components/PlaceholderCard";
 
 const log = [{ message: "Welcome", delay: 200 }];
 
@@ -81,6 +83,25 @@ const Start: FC<{
   return (
     <CardContainer>
       <DialogHeader>Welcome to Prisma</DialogHeader>
+      <DialogStatus>
+        <GridContainer cols="2fr 3fr">
+          <div>
+            <div style={{ fontSize: "var(--font-size-small)" }}>
+              Current directory
+            </div>
+            <div
+              style={{
+                marginTop: "4px",
+                opacity: 0.5,
+                fontFamily: "var(--font-family--code)"
+              }}
+            >
+              Users/kristjanjansen/projects
+            </div>
+          </div>
+          <PlacholderContainer>Other info we can detect from user's working environment / CWD. Perhaps also results on DB availabilty / port scannings?</PlacholderContainer>
+        </GridContainer>
+      </DialogStatus>
       <DialogBody>
         <GridContainer cols="1fr">
           <div>

@@ -4,8 +4,7 @@ const CardButton: FC<{
   title?: any;
   subtitle?: any;
   icon?: any;
-  children?: any;
-  contents?: any;
+  content?: any;
   selected?: boolean;
   disabled?: boolean;
   onClick?: Function;
@@ -14,11 +13,12 @@ const CardButton: FC<{
   subtitle = null,
   icon = null,
   children = null,
-  contents = null,
+  content = null,
   disabled = false,
   selected = false,
   onClick = () => null
 }) => (
+  <div>
   <div
     style={{
       borderRadius: "6px",
@@ -47,6 +47,8 @@ const CardButton: FC<{
       </div>
     </div>
     </div>
+  </div>
+  { content }
   </div>
 );
 
