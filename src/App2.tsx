@@ -5,6 +5,8 @@ import PromiseQueue from "easy-promise-queue";
 import Starterkit from "./pages/Starterkit";
 import Existing from "./pages/Existing";
 import Start from "./pages/Start";
+import GenerateTools from "./pages/GenerateTools";
+import NextSteps from "./pages/NextSteps";
 
 import "./App.css";
 import Log from "./components/Log";
@@ -38,15 +40,29 @@ const App: FC = () => {
     //}
   }, [logBatch]);
 
-  let [step, setStep] = useState(2);
+  let [step, setStep] = useState(0);
 
   const steps = [
     <Start
       onStep={(newStep: any) => setStep(newStep)}
       onLog={(l: any) => setLogBatch(l)}
     />,
-    <Existing onPrev={() => setStep(0)} onLog={(l: any) => setLogBatch(l)} />,
-    <Starterkit onPrev={() => setStep(0)} onLog={(l: any) => setLogBatch(l)} />
+    <Existing
+      onPrev={() => setStep(0)}
+      onNext={() => setStep(3)}
+      onLog={(l: any) => setLogBatch(l)}
+    />,
+    <Starterkit
+      onPrev={() => setStep(0)}
+      onNext={() => setStep(3)}
+      onLog={(l: any) => setLogBatch(l)}
+    />,
+    <GenerateTools
+      onPrev={() => setStep(0)}
+      onDone={() => setStep(4)}
+      onLog={(l: any) => setLogBatch(l)}
+    />,
+    <NextSteps onPrev={() => setStep(0)} onLog={(l: any) => setLogBatch(l)} />
   ];
 
   return (

@@ -25,17 +25,13 @@ const options = [
     title: "Add Prisma\nto a existing project",
     icon: <PlaceholderIcon size="64px" />,
     subtitle: `Generate Prisma code libraries for accessing the data 
-      
-[ Results on initial DB availabilty / port scannings ]
-      `,
+            `,
     disabled: false
   },
   {
     title: "Create a new Prisma\nsample project",
     icon: <PlaceholderIcon size="64px" />,
     subtitle: `Choose this when you create a new project to try out Prisma
-
-[ Info about available starter kits?]
       `,
     disabled: false
   }
@@ -103,32 +99,7 @@ const Start: FC<{
         </GridContainer>
       </DialogStatus>
       <DialogBody>
-        <GridContainer cols="1fr">
-          <div>
-            <div>Current directory</div>
-            <div
-              style={{
-                marginTop: "4px",
-                opacity: 0.5,
-                fontFamily: "var(--font-family--code)"
-              }}
-            >
-              Users/kristjanjansen/projects
-            </div>
-            <p/>
-            <PlaceholderCard>a</PlaceholderCard>
-          </div>
-          {/* {languages.map(({ title, icon, disabled }, i) => (
-            <CardButton
-              selected={i === language}
-              title={title}
-              icon={icon}
-              disabled={disabled}
-              onClick={() => setLanguage(i)}
-            />
-          ))} */}
-        </GridContainer>
-        <div style={{ padding: "16px 0" }}>
+        <div style={{ padding: "40px" }}>
           <GridContainer cols="1fr 1fr" rows="1fr" gap="16px">
             {options.map((o, i) => (
               <CardContainer>
@@ -156,7 +127,7 @@ const Start: FC<{
                         justifyContent: "flex-end"
                       }}
                     >
-                      <Button>Next →</Button>
+                      <Button>Start →</Button>
                     </div>
                   </div>
                 </div>

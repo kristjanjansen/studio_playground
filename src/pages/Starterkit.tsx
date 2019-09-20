@@ -308,7 +308,7 @@ const SetupDb: FC<{
       </DialogBody>
       <DialogFooter>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
-        <Button>Generate</Button>
+        <Button onClick={() => onNext()}>Generate</Button>
       </DialogFooter>
     </CardContainer>
   );

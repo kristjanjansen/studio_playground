@@ -63,7 +63,7 @@ const ConnectDb: FC<{
       </DialogBody>
       <DialogFooter disabled={count !== 100}>
         <LightButton onClick={() => onPrev()}>← Back</LightButton>
-        <Button onClick={() => onNext()}>Next →</Button>
+        <Button onClick={() => onNext()}>Generate</Button>
       </DialogFooter>
     </CardContainer>
   );
