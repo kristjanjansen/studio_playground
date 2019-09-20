@@ -12,9 +12,10 @@ const PlaceholderIcon: FC<{ size?: string }> = ({ size = "40px" }) => (
       cy="10"
       r="9"
       strokeWidth="1"
-      stroke="var(--gray-400)"
+      stroke="var(--gray-600)"
       strokeDasharray="4 1"
       fill="none"
+      vectorEffect="non-scaling-stroke"
     />
   </svg>
 );

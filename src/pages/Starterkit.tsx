@@ -271,7 +271,7 @@ const SetupDb: FC<{
           </div>
          
           <div>
-            <h4>Seed a sample dataset</h4>
+            <h4>Seed a sample dataset (future feature)</h4>
             <GridContainer cols="1fr 1fr 1fr">
               {[
                 { title: "Random users", subtitle: "Alice, Bob and others" },
