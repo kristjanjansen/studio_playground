@@ -178,7 +178,7 @@ const SetupDb: FC<{
 
   return (
     <CardContainer>
-      <DialogHeader>Existing database flow</DialogHeader>
+      <DialogHeader>Add Prisma to an existing project</DialogHeader>
       <DialogBody>
 
       <GridContainer cols="5fr 1fr 1fr 1fr">
@@ -201,7 +201,7 @@ const SetupDb: FC<{
         
         <GridContainer cols="1fr" gap="16px">
           <div>
-            <h2>1. Set up a datasource</h2>
+            <h2>① Set up a datasource</h2>
             <h4>Select a database</h4>
             <GridContainer cols="1fr 1fr 1fr 1fr">
               {dbTypes.map(({ title, icon, disabled, subtitle }, i) => (
@@ -266,7 +266,6 @@ const SetupDb: FC<{
           </div>
 
           <div>
-            <h2>2. Generate code</h2>
             <h4>Select existing schema</h4>
             <GridContainer cols="1fr">
               {seeds.map(({ title, subtitle, disabled }, i) => (
@@ -310,8 +309,9 @@ const SetupDb: FC<{
           </div> */}
 
           <div>
+            <h3>② Generate code</h3>
             <h4>Select Prisma tools</h4>
-            <GridContainer cols="1fr">
+            <GridContainer cols="1fr 1fr 1fr">
               {tools.map(({ title, subtitle, icon, disabled }, i) => (
                 <CardButton
                   title={title}
