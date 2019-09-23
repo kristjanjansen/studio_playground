@@ -2,9 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 
 import Button from '../components/Button';
 import CardContainer from '../components/CardContainer';
-import CodeContainer from '../components/CodeContainer';
 import DialogBody from '../components/DialogBody';
-import DialogFooter from '../components/DialogFooter';
 import DialogHeader from '../components/DialogHeader';
 import DialogStatus from '../components/DialogStatus';
 import GridContainer from '../components/GridContainer';
