@@ -1,7 +1,4 @@
 import React, { FC } from "react";
-import Button from "./Button";
-import LightButton from "./LightButton";
-
 
 const DialogFooter: FC<{
   children?: any,

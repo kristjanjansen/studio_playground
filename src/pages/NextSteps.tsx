@@ -1,10 +1,10 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect } from 'react';
 
-import CardContainer from "../components/CardContainer";
-import DialogHeader from "../components/DialogHeader";
-import DialogBody from "../components/DialogBody";
-import DialogFooter from "../components/DialogFooter";
-import CodeContainer from "../components/CodeContainer";
+import CardContainer from '../components/CardContainer';
+import CodeContainer from '../components/CodeContainer';
+import DialogBody from '../components/DialogBody';
+import DialogFooter from '../components/DialogFooter';
+import DialogHeader from '../components/DialogHeader';
 
 const log = [
   { message: " ",delay: 30 },
@@ -34,7 +34,7 @@ const ConnectDb: FC<{
 }> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
   useEffect(() => {
     onLog(log);
-  }, []);
+  }, [onLog]);
 
   return (
     <CardContainer>
@@ -62,7 +62,7 @@ const ConnectDb: FC<{
         <p style={{ marginLeft: "20px", opacity: 0.5 }}>
           Explore sample operations and evolve the project:
           <br />
-          <a href="https://github.com/prisma/prisma2" target="_blank">
+          <a href="https://github.com/prisma/prisma2" target="_blank" rel="noopener noreferrer">
             https://github.com/prisma/prisma2
           </a>
         </p>

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import ToolbarIcon from "./ToolbarIcon";
+import ToolbarIcon from "./icons/ToolbarIcon";
 
 const Toolbar: FC = () => {
   return (

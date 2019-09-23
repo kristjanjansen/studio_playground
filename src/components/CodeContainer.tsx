@@ -10,6 +10,7 @@ const CodeContainer: FC<{
 
   const [status, setStatus] = useState(0);
 
+  // eslint-disable-next-line
   const [_, copyToClipboard] = useCopyToClipboard(); 
 
   useInterval(

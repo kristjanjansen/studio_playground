@@ -1,30 +1,28 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from 'react';
+import { useList } from 'react-use';
 
-import CardContainer from "../components/CardContainer";
-import CenterContainer from "../components/CenterContainer";
-import DialogHeader from "../components/DialogHeader";
-import DialogStatus from "../components/DialogStatus";
-import DialogBody from "../components/DialogBody";
-import DialogFooter from "../components/DialogFooter";
-import LightButton from "../components/LightButton";
-import Button from "../components/Button";
-import GridContainer from "../components/GridContainer";
-import TextInput from "../components/TextInput";
-import CheckboxIcon from "../components/CheckboxIcon";
-import CheckboxInput from "../components/CheckboxInput";
-import CodeContainer from "../components/CodeContainer";
-import CardButton from "../components/CardButton";
-import PostgresIcon from "../components/PostgresIcon";
-import MysqlIcon from "../components/MysqlIcon";
-import SqliteIcon from "../components/SqliteIcon";
-import MongoIcon from "../components/MongoIcon";
-import TsIcon from "../components/TsIcon";
-import JsIcon from "../components/JsIcon";
-import GoIcon from "../components/GoIcon";
-import PlaceholderIcon from "../components/PlaceholderIcon";
-import { useList } from "react-use";
-import Pagebreak from "../components/Pagebreak";
-import PlacholderContainer from "../components/PlaceholderCard";
+import Button from '../components/Button';
+import CardButton from '../components/CardButton';
+import CardContainer from '../components/CardContainer';
+import CheckboxInput from '../components/CheckboxInput';
+import DialogBody from '../components/DialogBody';
+import DialogFooter from '../components/DialogFooter';
+import DialogHeader from '../components/DialogHeader';
+import DialogStatus from '../components/DialogStatus';
+import GridContainer from '../components/GridContainer';
+import CheckboxIcon from '../components/icons/CheckboxIcon';
+import GoIcon from '../components/icons/GoIcon';
+import JsIcon from '../components/icons/JsIcon';
+import MongoIcon from '../components/icons/MongoIcon';
+import MysqlIcon from '../components/icons/MysqlIcon';
+import PlaceholderIcon from '../components/icons/PlaceholderIcon';
+import PostgresIcon from '../components/icons/PostgresIcon';
+import SqliteIcon from '../components/icons/SqliteIcon';
+import TsIcon from '../components/icons/TsIcon';
+import LightButton from '../components/LightButton';
+import Pagebreak from '../components/Pagebreak';
+import PlacholderContainer from '../components/PlaceholderCard';
+import TextInput from '../components/TextInput';
 
 const log = [{ message: "Enter your database details", delay: 0 }];
 
@@ -52,45 +50,6 @@ const dbTypes = [
     icon: <MongoIcon />,
     subtitle: "Coming soon",
     disabled: true
-  }
-];
-
-const kits = [
-  {
-    title: "All Prisma tools with NodeJS sample script",
-    icon: "",
-    subtitle: "The most minimalistic setup",
-    disabled: false
-  },
-  {
-    title: "GraphQL API",
-    icon: "",
-    subtitle: "Basic GraphQL server with graphql-yoga",
-    disabled: false
-  },
-  {
-    title: "GraphQL API with authentication",
-    icon: "",
-    subtitle: "Basic GraphQL server with authentication",
-    disabled: false
-  },
-  {
-    title: "GraphQL API with Apollo Server",
-    icon: "",
-    subtitle: "Basic GraphQL server with apollo-server",
-    disabled: false
-  },
-  {
-    title: "REST API",
-    icon: "",
-    subtitle: "Basic REST server with express.js",
-    disabled: false
-  },
-  {
-    title: "gRPC API",
-    icon: "",
-    subtitle: " Basic gRPC server and client",
-    disabled: false
   }
 ];
 
@@ -143,11 +102,6 @@ const seeds = [
     disabled: false
   },
   { title: "mytable", subtitle: "1 table, 10 rows", disabled: false }
-  // {
-  //   title: "tmp",
-  //   subtitle: "Empty database, no tables, no schema. What to do here?",
-  //   disabled: true
-  // }
 ];
 
 const SetupDb: FC<{
@@ -157,8 +111,9 @@ const SetupDb: FC<{
 }> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
   useEffect(() => {
     onLog(log);
-  }, []);
+  }, [onLog]);
 
+  // eslint-disable-next-line
   const [connection, setConnection] = useState("");
   const [host, setHost] = useState("127.0.0.1");
   const [ssl, setSsl] = useState(false);
@@ -168,7 +123,6 @@ const SetupDb: FC<{
 
   const [language, setLanguage] = useState(0);
   const [tool, { set: setTool, push: pushTool }] = useList([0, 1]);
-  const [kit, setKit] = useState(0);
   const [dbtype, setDbtype] = useState(0);
   const [dbfile, setDbfile] = useState("./database.db");
   const [dataset, setDataset] = useState(0);
@@ -178,7 +132,7 @@ const SetupDb: FC<{
     setConnection(
       `mysql://${user}${password && `:${password}`}@${host}:${port}/`
     );
-  }, [host, port]);
+  }, [user,password,host, port]);
 
   return (
     <CardContainer>
@@ -224,7 +178,7 @@ const SetupDb: FC<{
           <div>
             <h4>Connect to a database</h4>
             <div style={{ height: "auto" }}>
-              {dbtype == 2 && (
+              {dbtype === 2 && (
                 <CardContainer>
                   <div style={{ padding: "12px" }}>
                     <TextInput
@@ -297,34 +251,6 @@ const SetupDb: FC<{
             </GridContainer>
           </div>
 
-          {/* --- */}
-
-          {/*
-          <div>
-            <h4>Select a starter kit</h4>
-            <GridContainer cols="1fr">
-              {kits.map(({ title, subtitle, icon, disabled }, i) => (
-                <CardButton
-                  selected={i === kit}
-                  title={title}
-                  subtitle={subtitle}
-                  disabled={disabled}
-                  onClick={() => setKit(i)}
-                />
-              ))}
-            </GridContainer>
-          </div>
-          */}
-
-          {/* <div>
-            <h4>Config</h4>
-            <CardContainer>
-              <div style={{ padding: "12px" }}>
-                <TextInput title="Generated code dir" value="/prisma" />
-              </div>
-            </CardContainer>
-          </div> */}
-
           <Pagebreak />
           <div>
             <h2>Generate code</h2>
@@ -384,10 +310,3 @@ const SetupDb: FC<{
 };
 
 export default SetupDb;
-
-/* <TextInput
-                title="Connection string"
-                value={connection}
-                onChange={(value: any) => setConnection(value)}
-              /> */
-/* <CodeContainer copy>{connection}</CodeContainer> */
