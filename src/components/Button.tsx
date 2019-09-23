@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 
-//const DialogFooter: FC<{ onNext?: Function }> = ({ onNext = null }) => (
-
 const Button: FC<{ children?: any; onClick?: Function, secondary?: boolean }> = ({
   children = null,
   onClick = () => null,

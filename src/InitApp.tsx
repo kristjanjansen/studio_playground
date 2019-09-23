@@ -10,7 +10,6 @@ import NextSteps from "./pages/NextSteps";
 
 import "./App.css";
 import Log from "./components/Log";
-import Init from "./old_pages/SelectTools";
 
 let pq = new PromiseQueue({ concurrency: 1 });
 

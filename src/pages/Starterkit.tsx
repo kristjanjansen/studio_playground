@@ -1,29 +1,26 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from 'react';
+import { useList } from 'react-use';
 
-import CardContainer from "../components/CardContainer";
-import CenterContainer from "../components/CenterContainer";
-import DialogHeader from "../components/DialogHeader";
-import DialogBody from "../components/DialogBody";
-import DialogFooter from "../components/DialogFooter";
-import LightButton from "../components/LightButton";
-import Button from "../components/Button";
-import GridContainer from "../components/GridContainer";
-import TextInput from "../components/TextInput";
-import CheckboxIcon from "../components/CheckboxIcon";
-import CheckboxInput from "../components/CheckboxInput";
-import CodeContainer from "../components/CodeContainer";
-import CardButton from "../components/CardButton";
-import PostgresIcon from "../components/PostgresIcon";
-import MysqlIcon from "../components/MysqlIcon";
-import SqliteIcon from "../components/SqliteIcon";
-import MongoIcon from "../components/MongoIcon";
-import TsIcon from "../components/TsIcon";
-import JsIcon from "../components/JsIcon";
-import GoIcon from "../components/GoIcon";
-import PlaceholderIcon from "../components/PlaceholderIcon";
-import { useList } from "react-use";
-import PlacholderContainer from "../components/PlaceholderCard";
-import DialogStatus from "../components/DialogStatus";
+import Button from '../components/Button';
+import CardButton from '../components/CardButton';
+import CardContainer from '../components/CardContainer';
+import CheckboxInput from '../components/CheckboxInput';
+import DialogBody from '../components/DialogBody';
+import DialogFooter from '../components/DialogFooter';
+import DialogHeader from '../components/DialogHeader';
+import DialogStatus from '../components/DialogStatus';
+import GridContainer from '../components/GridContainer';
+import GoIcon from '../components/icons/GoIcon';
+import JsIcon from '../components/icons/JsIcon';
+import MongoIcon from '../components/icons/MongoIcon';
+import MysqlIcon from '../components/icons/MysqlIcon';
+import PlaceholderIcon from '../components/icons/PlaceholderIcon';
+import PostgresIcon from '../components/icons/PostgresIcon';
+import SqliteIcon from '../components/icons/SqliteIcon';
+import TsIcon from '../components/icons/TsIcon';
+import LightButton from '../components/LightButton';
+import PlacholderContainer from '../components/PlaceholderCard';
+import TextInput from '../components/TextInput';
 
 const log = [{ message: "Pick a starter kit", delay: 200 }];
 
@@ -187,7 +184,7 @@ const SetupDb: FC<{
               Users/kristjanjansen/projects
             </div>
           </div>
-          <PlacholderContainer>Other info we can detect from user's working environment / CWD. Perhaps also results on DB availabilty / port scannings?</PlacholderContainer>
+          <PlacholderContainer>Other info we can detect from user's working environment / CWD</PlacholderContainer>
         </GridContainer>
       </DialogStatus>
       <DialogBody>
@@ -315,10 +312,3 @@ const SetupDb: FC<{
 };
 
 export default SetupDb;
-
-/* <TextInput
-                title="Connection string"
-                value={connection}
-                onChange={(value: any) => setConnection(value)}
-              /> */
-/* <CodeContainer copy>{connection}</CodeContainer> */

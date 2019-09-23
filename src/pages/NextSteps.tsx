@@ -1,10 +1,10 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect } from 'react';
 
-import CardContainer from "../components/CardContainer";
-import DialogHeader from "../components/DialogHeader";
-import DialogBody from "../components/DialogBody";
-import DialogFooter from "../components/DialogFooter";
-import CodeContainer from "../components/CodeContainer";
+import CardContainer from '../components/CardContainer';
+import CodeContainer from '../components/CodeContainer';
+import DialogBody from '../components/DialogBody';
+import DialogFooter from '../components/DialogFooter';
+import DialogHeader from '../components/DialogHeader';
 
 const log = [
   { message: " ",delay: 30 },

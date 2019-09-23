@@ -1,22 +1,18 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useEffect, useState } from 'react';
 
-import CardContainer from "../components/CardContainer";
-import GridContainer from "../components/GridContainer";
-import DialogHeader from "../components/DialogHeader";
-import DialogBody from "../components/DialogBody";
-import DialogFooter from "../components/DialogFooter";
-import CardButton from "../components/CardButton";
-
-import TsIcon from "../components/TsIcon";
-import JsIcon from "../components/JsIcon";
-import GoIcon from "../components/GoIcon";
-import LightButton from "../components/LightButton";
-import Button from "../components/Button";
-import PlaceholderIcon from "../components/PlaceholderIcon";
-import CodeContainer from "../components/CodeContainer";
-import PlaceholderCard from "../components/PlaceholderCard";
-import DialogStatus from "../components/DialogStatus";
-import PlacholderContainer from "../components/PlaceholderCard";
+import Button from '../components/Button';
+import CardContainer from '../components/CardContainer';
+import CodeContainer from '../components/CodeContainer';
+import DialogBody from '../components/DialogBody';
+import DialogFooter from '../components/DialogFooter';
+import DialogHeader from '../components/DialogHeader';
+import DialogStatus from '../components/DialogStatus';
+import GridContainer from '../components/GridContainer';
+import JsIcon from '../components/icons/JsIcon';
+import GoIcon from '../components/icons/GoIcon';
+import PlaceholderIcon from '../components/icons/PlaceholderIcon';
+import TsIcon from '../components/icons/TsIcon';
+import PlacholderContainer from '../components/PlaceholderCard';
 
 const log = [{ message: "Welcome", delay: 200 }];
 
@@ -95,7 +91,7 @@ const Start: FC<{
               Users/kristjanjansen/projects
             </div>
           </div>
-          <PlacholderContainer>Other info we can detect from user's working environment / CWD. Perhaps also results on DB availabilty / port scannings?</PlacholderContainer>
+          <PlacholderContainer>Other info we can detect from user's working environment / CWD</PlacholderContainer>
         </GridContainer>
       </DialogStatus>
       <DialogBody>

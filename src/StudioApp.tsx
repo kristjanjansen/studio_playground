@@ -11,7 +11,7 @@ import Variables from "./components/Variables";
 
 import './App.css';
 
-import { randomid } from "./utils";
+import { randomid } from "./utils/utils";
 
 const processData = (data: any) => {
   return data.map((item: any) => {

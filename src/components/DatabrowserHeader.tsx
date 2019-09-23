@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import Button from "./Button";
 import DatabrowserButton from "./DatabrowserButton";
-import FilterIcon from "./FilterIcon";
+import FilterIcon from "./icons/FilterIcon";
 import DatabrowserModal from "./DatabrowserModal";
 
 const buttons = [
