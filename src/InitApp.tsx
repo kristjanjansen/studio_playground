@@ -14,6 +14,7 @@ import Log from "./components/Log";
 let pq = new PromiseQueue({ concurrency: 1 });
 
 const App: FC = () => {
+  // eslint-disable-next-line
   const [sendMessage, lastMessage, status] = useWebSocket(
     "ws://localhost:9000"
   );
@@ -36,8 +37,7 @@ const App: FC = () => {
           })
       )
     );
-    //}
-  }, [logBatch]);
+  }, [logBatch,sendMessage,status]);
 
   let [step, setStep] = useState(0);
 

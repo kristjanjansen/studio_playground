@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import Button from '../components/Button';
 import CardContainer from '../components/CardContainer';
@@ -6,10 +6,7 @@ import DialogBody from '../components/DialogBody';
 import DialogHeader from '../components/DialogHeader';
 import DialogStatus from '../components/DialogStatus';
 import GridContainer from '../components/GridContainer';
-import JsIcon from '../components/icons/JsIcon';
-import GoIcon from '../components/icons/GoIcon';
 import PlaceholderIcon from '../components/icons/PlaceholderIcon';
-import TsIcon from '../components/icons/TsIcon';
 import PlacholderContainer from '../components/PlaceholderCard';
 
 const log = [{ message: "Welcome", delay: 200 }];
@@ -31,27 +28,6 @@ const options = [
   }
 ];
 
-const languages = [
-  {
-    title: "Typescript",
-    icon: <TsIcon />,
-    subtitle: "Typescript",
-    disabled: false
-  },
-  {
-    title: "Javascript",
-    icon: <JsIcon />,
-    subtitle: "Javascript",
-    disabled: false
-  },
-  {
-    title: "Golang",
-    icon: <GoIcon />,
-    subtitle: "Coming soon",
-    disabled: true
-  }
-];
-
 const Start: FC<{
   onPrev?: Function;
   onNext?: Function;
@@ -66,9 +42,7 @@ const Start: FC<{
 
   useEffect(() => {
     onLog(log);
-  }, []);
-
-  const [language, setLanguage] = useState(0);
+  }, [onLog]);
 
   return (
     <CardContainer>

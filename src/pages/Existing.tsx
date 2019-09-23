@@ -111,8 +111,9 @@ const SetupDb: FC<{
 }> = ({ onPrev = () => null, onNext = () => null, onLog = () => null }) => {
   useEffect(() => {
     onLog(log);
-  }, []);
+  }, [onLog]);
 
+  // eslint-disable-next-line
   const [connection, setConnection] = useState("");
   const [host, setHost] = useState("127.0.0.1");
   const [ssl, setSsl] = useState(false);
@@ -122,7 +123,6 @@ const SetupDb: FC<{
 
   const [language, setLanguage] = useState(0);
   const [tool, { set: setTool, push: pushTool }] = useList([0, 1]);
-  const [kit, setKit] = useState(0);
   const [dbtype, setDbtype] = useState(0);
   const [dbfile, setDbfile] = useState("./database.db");
   const [dataset, setDataset] = useState(0);
@@ -132,7 +132,7 @@ const SetupDb: FC<{
     setConnection(
       `mysql://${user}${password && `:${password}`}@${host}:${port}/`
     );
-  }, [host, port]);
+  }, [user,password,host, port]);
 
   return (
     <CardContainer>
@@ -178,7 +178,7 @@ const SetupDb: FC<{
           <div>
             <h4>Connect to a database</h4>
             <div style={{ height: "auto" }}>
-              {dbtype == 2 && (
+              {dbtype === 2 && (
                 <CardContainer>
                   <div style={{ padding: "12px" }}>
                     <TextInput

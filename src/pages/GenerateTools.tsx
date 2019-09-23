@@ -45,11 +45,11 @@ const ConnectDb: FC<{
     if (count === 100) {
       onDone();
     }
-  }, [count]);
+  }, [count, onDone]);
 
   useEffect(() => {
     onLog(log);
-  }, []);
+  }, [onLog]);
 
   return (
     <CardContainer>
